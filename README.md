@@ -8,27 +8,48 @@ Founded by **陈宏强 Richard Chen × 刘婷 Tina Liu**
 
 This repository is the **public-facing brand website** for KUAKUA — a single, dependency-free `index.html` designed for GitHub Pages and permanent international maintenance.
 
-**Current version:** `v1.0.0` (2026-06-23)
+**Current version:** `v1.1.0` (2026-06-23)
 
 ---
 
-## What's in v1.0
+## What's inside
 
-- Premium single-page brand site inspired by Lululemon · Alo · Rhode · Skims
+| File | Purpose |
+| --- | --- |
+| `index.html` | The public brand site (single self-contained HTML) |
+| `admin.html` | Browser-based CMS to publish/edit/delete journal posts |
+| `data/posts.json` | Source of truth for all journal posts |
+| `assets/posts/` | Uploaded images (organized by `YYYY-MM/`) |
+| `CHANGELOG.md` | Version history |
+| `LICENSE` | Bilingual proprietary license — All Rights Reserved |
+| `.nojekyll` | Tells GitHub Pages to skip Jekyll processing |
+| `.gitignore` | OS/editor noise |
+
+## What v1.1 ships
+
+**Public site** (`index.html`)
+
+- Premium single-page design inspired by Lululemon · Alo · Rhode · Skims
 - **Bilingual** EN / 中 — one-click toggle, persisted in `localStorage`
-- **Light / Dark mode** — auto-detects system preference on first visit, persisted thereafter
-- **Member auth (local v1)** — Sign Up / Sign In modal, stored in `localStorage` with salted SHA-256 hashing. v2 will move to a real backend.
-- **Newsletter signup** — emails captured in `localStorage` for now
-- **Daily Affirmations carousel** — Mirror · Bedtime · Abundance, auto-rotating
-- **Four Pillars** section — Self-Love · Soft Life · High Vibration · Feminine Energy
-- **Founders** section
-- Fully responsive (mobile menu included)
-- Scroll-reveal animations, respects `prefers-reduced-motion`
-- Inline SVG favicon, no external assets required
-- Open Graph metadata for social sharing
-- WCAG-aware: keyboard-navigable, `focus-visible`, ARIA roles on nav/modal/carousel
+- **Light / Dark mode** — auto-detects system preference on first visit
+- **Sections**: Hero · Manifesto · Four Pillars · Affirmations · **Journal** · Products · Community · Founders · Footer
+- **Daily Affirmations carousel** — Mirror · Bedtime · Abundance
+- **Journal** with full-screen reader, deep-linkable posts (`#journal/<slug>`), minimal inline Markdown renderer
+- **Member auth (local v1)** — Sign Up / Sign In modal with salted SHA-256
+- **Newsletter** signup
+- Mobile-responsive, scroll-reveal animations, WCAG-aware
 
-Everything ships as **one `index.html`** so it can be hosted anywhere static — GitHub Pages, Vercel, Netlify, Cloudflare Pages, even an S3 bucket — with zero build step.
+**Admin CMS** (`admin.html`) — *new in v1.1*
+
+- PAT-gated entry (GitHub Personal Access Token, stored in browser localStorage)
+- Markdown editor with toolbar (H2/H3, bold, italic, link, image, list, quote, hr) + keyboard shortcuts
+- Drag-drop cover image + inline image upload via GitHub Contents API
+- Live preview pane
+- One-click publish (commits `data/posts.json` to `main`, GitHub Pages rebuilds in ~1 min)
+- Edit existing posts, delete with confirm
+- Unsaved-changes guard, status pill, toast notifications
+
+Everything ships as **plain HTML/CSS/vanilla JS** so it runs anywhere static — GitHub Pages, Vercel, Netlify, Cloudflare Pages, S3 — with zero build step and zero npm dependencies.
 
 ---
 
@@ -100,9 +121,84 @@ git push --tags
 
 ---
 
+## Publishing posts via the Admin CMS
+
+Live URL: <https://chenhongqiang2025.github.io/kuakua/admin.html>
+(Local: open `admin.html` directly in your browser, or via `python -m http.server`.)
+
+### First-time setup — generate a GitHub PAT
+
+The admin commits directly to this repo from your browser, so it needs a token with write access to `chenhongqiang2025/kuakua`.
+
+1. Sign in to GitHub as **chenhongqiang2025** (not the IBM account).
+2. Go to <https://github.com/settings/personal-access-tokens/new> — this is the **fine-grained** PAT page, not the classic one.
+3. Fill in:
+   - **Token name** → `KUAKUA admin`
+   - **Expiration** → 1 year (or whatever you're comfortable rotating)
+   - **Repository access** → *Only select repositories* → pick `chenhongqiang2025/kuakua`
+   - **Repository permissions** → expand the list, set **Contents: Read and write**.
+     (Metadata: Read-only will be auto-checked.)
+4. Click **Generate token**, copy it once (GitHub will only show it this one time).
+5. Open the admin page, paste the token, hit **Verify & continue**.
+6. The token is stored in your browser's `localStorage` for this device only. Sign out wipes it.
+
+> 🔒 **Why this is reasonably safe**: the token is scoped to exactly one repo with no admin or workflow permissions. Worst-case leak = an attacker can edit your posts; they can't change repo settings, delete the repo, or touch other repos. Rotate yearly.
+
+### Daily workflow
+
+1. Open admin → click **+ New post**.
+2. Write title (中) + optional English title, pick language, add tags, drag in a cover image, write the body in Markdown.
+3. (Optional) Toggle **Preview** to see exactly how it'll render.
+4. Click **Publish**. The admin:
+   - Uploads any new images to `assets/posts/YYYY-MM/...` (one commit each)
+   - Updates `data/posts.json` with your new post (one more commit)
+5. GitHub Pages auto-rebuilds in ~1 minute. Hard-refresh the journal section — your post is live.
+
+### Editing or deleting an existing post
+
+- Click any post in the left sidebar → it loads into the editor.
+- Make changes → **Publish** (it updates in place, keeping the same ID).
+- **Delete** removes the post from `posts.json`. Note: uploaded images are not auto-deleted (they remain in the repo as orphan assets — easy to clean up by hand later).
+
+### When something goes wrong
+
+- **"Token rejected"** → token expired, was revoked, or doesn't have Contents: Write. Regenerate.
+- **"GitHub 409 conflict"** → someone else (or another tab) edited posts.json simultaneously. Reload the page and try again.
+- **"Network error"** → check your VPN / GFW situation. The admin uses `api.github.com` over HTTPS — same path as the API in your IDE.
+- **Image too large** → 5 MB cap per upload. Resize before dropping in.
+- **Lost the PAT?** → no recovery. Generate a fresh one.
+
+### Cross-posting to Xiaohongshu (the workflow)
+
+The website is the source of truth — Xiaohongshu is a downstream distribution channel:
+
+1. Write and publish on the KUAKUA admin first.
+2. Open the published post in the reader, copy the rendered text + save the cover image.
+3. Paste into Xiaohongshu, post.
+4. (Optional) Same content can flow to Instagram, 微博, etc.
+
+This way your content lives on infrastructure you own. Platforms come and go; the journal stays.
+
+---
+
 ## Architecture & how to maintain
 
-The whole site is **one file**, with this internal order:
+```text
+【KuaKua】/
+├── index.html          ← public site (single self-contained HTML)
+├── admin.html          ← CMS for posting to the Journal (PAT-gated)
+├── data/
+│   └── posts.json      ← source of truth for all journal posts
+├── assets/
+│   └── posts/          ← uploaded post images, organized by YYYY-MM/
+├── CHANGELOG.md
+├── LICENSE             ← bilingual proprietary, All Rights Reserved
+├── README.md
+├── .nojekyll
+└── .gitignore
+```
+
+The public site is **one file**, with this internal order:
 
 ```text
 index.html

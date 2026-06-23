@@ -605,6 +605,169 @@
     [data-theme="dark"] .product__badge { color: var(--kk-accent); }
 
     /* =========================================================
+       Journal
+       ========================================================= */
+    .journal__head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 64px; gap: 32px; flex-wrap: wrap; }
+    .journal__title { max-width: 18ch; }
+    .journal__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    @media (max-width: 980px) { .journal__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .journal__grid { grid-template-columns: 1fr; } }
+
+    .post-card {
+      background: transparent;
+      cursor: pointer;
+      display: flex; flex-direction: column;
+      transition: transform var(--kk-dur) var(--kk-ease);
+    }
+    .post-card:hover { transform: translateY(-4px); }
+    .post-card__cover {
+      aspect-ratio: 4/5;
+      background: var(--kk-bg-elev);
+      border-radius: var(--kk-radius-lg);
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 24px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .post-card__cover img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--kk-dur-slow) var(--kk-ease); }
+    .post-card:hover .post-card__cover img { transform: scale(1.04); }
+    .post-card__cover--empty::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--kk-accent-soft) 0%, var(--kk-bg-deep) 100%);
+    }
+    .post-card__cover-letter {
+      position: relative; z-index: 1;
+      font-family: var(--kk-font-display);
+      font-style: italic;
+      font-size: clamp(56px, 7vw, 96px);
+      color: var(--kk-accent-deep);
+    }
+    [data-theme="dark"] .post-card__cover-letter { color: var(--kk-accent); }
+    .post-card__meta { display: flex; gap: 12px; align-items: center; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--kk-text-muted); margin-bottom: 8px; }
+    .post-card__date { font-family: var(--kk-font-mono); }
+    .post-card__lang { padding: 2px 8px; border-radius: var(--kk-radius-pill); background: var(--kk-bg-elev); border: 1px solid var(--kk-border-soft); font-size: 10px; }
+    .post-card__title { font-family: var(--kk-font-display); font-size: 26px; font-weight: 500; line-height: 1.2; margin-bottom: 10px; color: var(--kk-text); }
+    .post-card__excerpt { color: var(--kk-text-soft); font-size: 14px; line-height: 1.65; margin-bottom: 16px; }
+    .post-card__tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .post-card__tag {
+      font-size: 11px; color: var(--kk-accent-deep); letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    [data-theme="dark"] .post-card__tag { color: var(--kk-accent); }
+    .post-card__tag::before { content: "#"; opacity: 0.6; margin-right: 1px; }
+
+    .journal__empty {
+      text-align: center;
+      padding: 80px 24px;
+      color: var(--kk-text-muted);
+      font-style: italic;
+      font-family: var(--kk-font-display);
+      font-size: 24px;
+    }
+    html[data-locale="zh"] .journal__empty { font-style: normal; font-family: "Noto Serif SC", serif; }
+
+    /* Reader modal — full-screen, immersive */
+    .reader {
+      position: fixed; inset: 0; z-index: 200;
+      background: var(--kk-bg);
+      overflow-y: auto;
+      opacity: 0; visibility: hidden;
+      transition: opacity var(--kk-dur) var(--kk-ease);
+    }
+    .reader.is-open { opacity: 1; visibility: visible; }
+    .reader__close {
+      position: fixed; top: 24px; right: 24px; z-index: 10;
+      width: 44px; height: 44px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--kk-bg-elev); color: var(--kk-text);
+      border: 1px solid var(--kk-border);
+      box-shadow: var(--kk-shadow);
+      transition: all var(--kk-dur-fast) var(--kk-ease);
+    }
+    .reader__close:hover { background: var(--kk-text); color: var(--kk-bg); }
+    .reader__article {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 80px 32px 120px;
+    }
+    @media (max-width: 640px) { .reader__article { padding: 64px 20px 80px; } }
+
+    .reader__cover {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: var(--kk-radius-lg);
+      overflow: hidden;
+      margin-bottom: 48px;
+      background: var(--kk-bg-elev);
+    }
+    .reader__cover img { width: 100%; height: 100%; object-fit: cover; }
+    .reader__meta { display: flex; gap: 12px; align-items: center; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--kk-text-muted); margin-bottom: 20px; }
+    .reader__title {
+      font-family: var(--kk-font-display);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 400; line-height: 1.1;
+      margin-bottom: 32px;
+      letter-spacing: -0.01em;
+    }
+    .reader__sub-title {
+      font-family: var(--kk-font-display);
+      font-style: italic;
+      font-size: clamp(18px, 2vw, 24px);
+      color: var(--kk-text-muted);
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
+    html[data-locale="zh"] .reader__sub-title { font-style: normal; font-family: "Noto Serif SC", serif; }
+
+    .reader__body { font-size: 18px; line-height: 1.8; color: var(--kk-text-soft); }
+    .reader__body p { margin: 0 0 1.4em; }
+    .reader__body p:last-child { margin-bottom: 0; }
+    .reader__body h2, .reader__body h3 {
+      font-family: var(--kk-font-display);
+      color: var(--kk-text);
+      font-weight: 500;
+      margin: 1.6em 0 0.6em;
+      line-height: 1.2;
+    }
+    .reader__body h2 { font-size: 36px; }
+    .reader__body h3 { font-size: 26px; }
+    .reader__body a {
+      color: var(--kk-accent-deep);
+      border-bottom: 1px solid var(--kk-accent-soft);
+      transition: border-color var(--kk-dur-fast) var(--kk-ease);
+    }
+    [data-theme="dark"] .reader__body a { color: var(--kk-accent); }
+    .reader__body a:hover { border-color: var(--kk-accent); }
+    .reader__body strong { color: var(--kk-text); font-weight: 600; }
+    .reader__body em { font-style: italic; color: var(--kk-text); }
+    .reader__body ul, .reader__body ol { margin: 0 0 1.4em; padding-left: 1.4em; }
+    .reader__body li { margin-bottom: 0.4em; }
+    .reader__body img { border-radius: var(--kk-radius); margin: 2em 0; max-width: 100%; height: auto; box-shadow: var(--kk-shadow); }
+    .reader__body hr { border: 0; border-top: 1px solid var(--kk-border); margin: 3em auto; width: 80px; }
+    .reader__body blockquote {
+      border-left: 2px solid var(--kk-accent);
+      padding: 4px 0 4px 24px;
+      margin: 1.6em 0;
+      font-family: var(--kk-font-display);
+      font-style: italic;
+      font-size: 24px;
+      color: var(--kk-text);
+    }
+    html[data-locale="zh"] .reader__body blockquote { font-style: normal; font-family: "Noto Serif SC", serif; }
+    .reader__footer {
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid var(--kk-border-soft);
+      font-size: 13px;
+      color: var(--kk-text-muted);
+      display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+
+    /* =========================================================
        Community / Newsletter
        ========================================================= */
     .community {
@@ -856,6 +1019,7 @@
       <li role="none"><a role="menuitem" href="#manifesto" data-i18n="nav.manifesto">Manifesto</a></li>
       <li role="none"><a role="menuitem" href="#pillars" data-i18n="nav.pillars">Pillars</a></li>
       <li role="none"><a role="menuitem" href="#affirmations" data-i18n="nav.affirmations">Affirmations</a></li>
+      <li role="none"><a role="menuitem" href="#journal" data-i18n="nav.journal">Journal</a></li>
       <li role="none"><a role="menuitem" href="#products" data-i18n="nav.products">Shop</a></li>
       <li role="none"><a role="menuitem" href="#founders" data-i18n="nav.about">About</a></li>
     </ul>
@@ -886,6 +1050,7 @@
     <li><a href="#manifesto" data-i18n="nav.manifesto">Manifesto</a></li>
     <li><a href="#pillars" data-i18n="nav.pillars">Pillars</a></li>
     <li><a href="#affirmations" data-i18n="nav.affirmations">Affirmations</a></li>
+    <li><a href="#journal" data-i18n="nav.journal">Journal</a></li>
     <li><a href="#products" data-i18n="nav.products">Shop</a></li>
     <li><a href="#founders" data-i18n="nav.about">About</a></li>
   </ul>
@@ -1017,6 +1182,25 @@
     </div>
 
     <div class="affirm__dots" id="affirmDots" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     Journal — daily content
+     ========================================================= -->
+<section class="journal" id="journal">
+  <div class="container">
+    <div class="journal__head reveal">
+      <div>
+        <span class="eyebrow" data-i18n="journal.eyebrow">The Journal</span>
+        <h2 class="display display-md journal__title" style="margin-top: 16px;" data-i18n="journal.title">Letters from a <em class="italic">soft life.</em></h2>
+      </div>
+      <p class="lead" style="max-width: 36ch;" data-i18n="journal.sub">Field notes, founder thoughts, and the long-form version of what you'd find on Xiaohongshu.</p>
+    </div>
+
+    <div class="journal__grid" id="journalGrid" aria-live="polite">
+      <!-- post cards injected by JS -->
+    </div>
   </div>
 </section>
 
@@ -1164,7 +1348,7 @@
     </div>
     <div class="footer__bottom">
       <span>© 2026 Chenhongqiang Richard Chen. <span data-i18n="footer.rights">All rights reserved.</span></span>
-      <span class="footer__version">v1.0.0</span>
+      <span class="footer__version">v1.1.0</span>
     </div>
   </div>
 </footer>
@@ -1226,6 +1410,18 @@
   </div>
 </div>
 
+<!-- =========================================================
+     Reader (Journal post fullscreen)
+     ========================================================= -->
+<div class="reader" id="reader" role="dialog" aria-modal="true" aria-labelledby="readerTitle">
+  <button class="reader__close" id="readerClose" aria-label="Close reader">
+    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <article class="reader__article" id="readerArticle">
+    <!-- injected by JS -->
+  </article>
+</div>
+
 <!-- Toast -->
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -1252,6 +1448,7 @@ const I18N = {
     "nav.manifesto": "Manifesto",
     "nav.pillars": "Pillars",
     "nav.affirmations": "Affirmations",
+    "nav.journal": "Journal",
     "nav.products": "Shop",
     "nav.about": "About",
     "nav.join": "Join",
@@ -1291,6 +1488,12 @@ const I18N = {
     "affirm.tab1": "Mirror",
     "affirm.tab2": "Bedtime",
     "affirm.tab3": "Abundance",
+
+    "journal.eyebrow": "The Journal",
+    "journal.title": "Letters from a <em class='italic'>soft life.</em>",
+    "journal.sub": "Field notes, founder thoughts, and the long-form version of what you'd find on Xiaohongshu.",
+    "journal.empty": "The first letter is on its way.",
+    "reader.back": "Back to journal →",
 
     "products.eyebrow": "The Edit",
     "products.title": "A wardrobe of <em class='italic'>words.</em>",
@@ -1374,6 +1577,7 @@ const I18N = {
     "nav.manifesto": "品牌主张",
     "nav.pillars": "四大核心",
     "nav.affirmations": "肯定语",
+    "nav.journal": "手记",
     "nav.products": "商店",
     "nav.about": "关于",
     "nav.join": "加入",
@@ -1413,6 +1617,12 @@ const I18N = {
     "affirm.tab1": "镜子",
     "affirm.tab2": "睡前",
     "affirm.tab3": "丰盛",
+
+    "journal.eyebrow": "夸夸手记",
+    "journal.title": "柔软生活的<em class='italic'>日常碎片。</em>",
+    "journal.sub": "创始人手记、品牌幕后、还有那些发在小红书上没说完的长版本。",
+    "journal.empty": "第一封信，正在路上。",
+    "reader.back": "← 回到手记列表",
 
     "products.eyebrow": "精选",
     "products.title": "一个由<em class='italic'>好话</em>组成的衣橱。",
@@ -1492,6 +1702,52 @@ const I18N = {
   }
 };
 
+/* ---------- 1b. Tiny utilities + minimal Markdown renderer ----------
+   Kept inline for permanent maintainability — no CDN dependency.
+   Supports: # h1-3, **bold**, *italic*, [link](url), ![img](src), - lists,
+             1. ordered lists, > blockquote, --- hr, paragraphs, soft <br>.
+---------------------------------------------------------------- */
+function escapeHtml(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&#39;");
+}
+function inlineMd(s) {
+  // run on already-html-escaped text
+  return s
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, a, u) => `<img src="${u}" alt="${a}">`)
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, t, u) => `<a href="${u}" target="_blank" rel="noopener">${t}</a>`)
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, "$1<em>$2</em>")
+    .replace(/`([^`]+)`/g, "<code>$1</code>");
+}
+function renderMarkdown(src) {
+  if (!src) return "";
+  const lines = String(src).replace(/\r\n/g, "\n").split("\n");
+  const out = []; let para = []; let inList = false; let listType = null; let inBq = false;
+  const flushPara = () => { if (para.length) { out.push("<p>" + inlineMd(escapeHtml(para.join("\n"))).replace(/\n/g, "<br>") + "</p>"); para = []; } };
+  const closeList = () => { if (inList) { out.push("</" + listType + ">"); inList = false; listType = null; } };
+  const closeBq   = () => { if (inBq)   { out.push("</blockquote>"); inBq = false; } };
+  for (const line of lines) {
+    if (/^---+\s*$/.test(line))                           { flushPara(); closeList(); closeBq(); out.push("<hr>"); continue; }
+    const h = /^(#{1,3})\s+(.+)$/.exec(line);
+    if (h)                                                { flushPara(); closeList(); closeBq(); out.push(`<h${h[1].length}>${inlineMd(escapeHtml(h[2]))}</h${h[1].length}>`); continue; }
+    const imgOnly = /^!\[([^\]]*)\]\(([^)]+)\)\s*$/.exec(line);
+    if (imgOnly)                                          { flushPara(); closeList(); closeBq(); out.push(`<img src="${escapeHtml(imgOnly[2])}" alt="${escapeHtml(imgOnly[1])}" loading="lazy">`); continue; }
+    const ul = /^[-*]\s+(.+)$/.exec(line);
+    if (ul)                                               { flushPara(); closeBq(); if (!inList || listType !== "ul") { closeList(); out.push("<ul>"); inList = true; listType = "ul"; } out.push(`<li>${inlineMd(escapeHtml(ul[1]))}</li>`); continue; }
+    const ol = /^\d+\.\s+(.+)$/.exec(line);
+    if (ol)                                               { flushPara(); closeBq(); if (!inList || listType !== "ol") { closeList(); out.push("<ol>"); inList = true; listType = "ol"; } out.push(`<li>${inlineMd(escapeHtml(ol[1]))}</li>`); continue; }
+    const bq = /^>\s?(.*)$/.exec(line);
+    if (bq)                                               { flushPara(); closeList(); if (!inBq) { out.push("<blockquote>"); inBq = true; } out.push("<p>" + inlineMd(escapeHtml(bq[1])) + "</p>"); continue; }
+    if (line.trim() === "")                               { flushPara(); closeList(); closeBq(); continue; }
+    closeList(); closeBq();
+    para.push(line);
+  }
+  flushPara(); closeList(); closeBq();
+  return out.join("\n");
+}
+
 /* ---------- 2. State persistence ---------- */
 const STORAGE = {
   theme:   "kk_theme",
@@ -1526,8 +1782,9 @@ function applyI18n(locale) {
   document.querySelectorAll(".lang-toggle__en").forEach(e => e.classList.toggle("lang-toggle__on", locale === "en"));
   document.querySelectorAll(".lang-toggle__zh").forEach(e => e.classList.toggle("lang-toggle__on", locale === "zh"));
 
-  // re-render carousel for new locale
+  // re-render carousel + journal for new locale
   renderAffirmations();
+  if (typeof Journal !== "undefined" && Journal.posts.length) Journal.render();
   // update nav account label if logged in
   refreshAuthUi();
 }
@@ -1792,6 +2049,128 @@ function initNewsletter() {
   });
 }
 
+/* ---------- 8b. Journal (loads from data/posts.json) ---------- */
+const Journal = {
+  posts: [],
+  async init() {
+    try {
+      const res = await fetch("data/posts.json?ts=" + Date.now(), { cache: "no-store" });
+      if (!res.ok) throw new Error("fetch failed: " + res.status);
+      const data = await res.json();
+      this.posts = (data.posts || []).filter(p => p.published);
+      this.posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+    } catch (e) {
+      console.warn("[KUAKUA] Could not load posts:", e);
+      this.posts = [];
+    }
+    this.render();
+    this.attachReader();
+    this.maybeOpenFromHash();
+    window.addEventListener("hashchange", () => this.maybeOpenFromHash());
+  },
+
+  fmtDate(iso) {
+    const d = new Date(iso);
+    const opts = { year: "numeric", month: "short", day: "numeric" };
+    return d.toLocaleDateString(currentLocale() === "zh" ? "zh-CN" : "en-US", opts);
+  },
+
+  pickTitle(p) {
+    const loc = currentLocale();
+    return (loc === "en" && p.title_en) ? p.title_en : p.title;
+  },
+
+  render() {
+    const grid = document.getElementById("journalGrid");
+    if (!grid) return;
+    if (!this.posts.length) {
+      grid.innerHTML = `<div class="journal__empty" style="grid-column: 1/-1;">${escapeHtml(t("journal.empty"))}</div>`;
+      return;
+    }
+    grid.innerHTML = this.posts.slice(0, 6).map(p => {
+      const title = this.pickTitle(p);
+      const langBadge = p.lang === "bilingual" ? "中 · EN" : (p.lang === "zh" ? "中" : "EN");
+      const tags = (p.tags || []).slice(0, 3).map(tag => `<span class="post-card__tag">${escapeHtml(tag)}</span>`).join("");
+      const coverHtml = p.cover
+        ? `<img src="${escapeHtml(p.cover)}" alt="${escapeHtml(title)}" loading="lazy">`
+        : `<span class="post-card__cover-letter">${escapeHtml((title || "·").charAt(0))}</span>`;
+      return `
+        <article class="post-card reveal" data-post-id="${escapeHtml(p.id)}" tabindex="0" role="button" aria-label="${escapeHtml(title)}">
+          <div class="post-card__cover ${p.cover ? "" : "post-card__cover--empty"}">${coverHtml}</div>
+          <div class="post-card__meta">
+            <span class="post-card__date">${escapeHtml(this.fmtDate(p.date))}</span>
+            <span class="post-card__lang">${langBadge}</span>
+          </div>
+          <h3 class="post-card__title">${escapeHtml(title)}</h3>
+          <p class="post-card__excerpt">${escapeHtml(p.excerpt || "")}</p>
+          <div class="post-card__tags">${tags}</div>
+        </article>
+      `;
+    }).join("");
+    grid.querySelectorAll(".post-card").forEach(card => {
+      const id = card.dataset.postId;
+      card.addEventListener("click", () => this.open(id));
+      card.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); this.open(id); } });
+    });
+    if (window.__revealIO) grid.querySelectorAll(".reveal").forEach(el => window.__revealIO.observe(el));
+  },
+
+  open(id) {
+    const post = this.posts.find(p => p.id === id);
+    if (!post) return;
+    const loc = currentLocale();
+    const title = this.pickTitle(post);
+    const altTitle = (loc === "en" ? post.title : post.title_en) || "";
+    const showAlt = altTitle && altTitle !== title && post.lang === "bilingual";
+    const dateOpts = { year: "numeric", month: "long", day: "numeric" };
+    const dateStr = new Date(post.date).toLocaleDateString(loc === "zh" ? "zh-CN" : "en-US", dateOpts);
+    const article = document.getElementById("readerArticle");
+    const cover = post.cover ? `<div class="reader__cover"><img src="${escapeHtml(post.cover)}" alt=""></div>` : "";
+    const tags = (post.tags || []).map(tg => `<span>#${escapeHtml(tg)}</span>`).join(" ");
+    article.innerHTML = `
+      ${cover}
+      <div class="reader__meta">
+        <span>${escapeHtml(dateStr)}</span>
+        ${tags}
+      </div>
+      <h1 class="reader__title" id="readerTitle">${escapeHtml(title)}</h1>
+      ${showAlt ? `<p class="reader__sub-title">${escapeHtml(altTitle)}</p>` : ""}
+      <div class="reader__body">${renderMarkdown(post.body)}</div>
+      <div class="reader__footer">
+        <span>KUAKUA · ${escapeHtml(post.id)}</span>
+        <a href="#journal" class="link-underline" id="readerBack">${escapeHtml(t("reader.back"))}</a>
+      </div>
+    `;
+    document.getElementById("reader").classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    document.querySelector(".reader").scrollTo({ top: 0 });
+    const slug = post.slug || post.id;
+    if (history.replaceState) history.replaceState(null, "", "#journal/" + encodeURIComponent(slug));
+    document.getElementById("readerBack").addEventListener("click", e => { e.preventDefault(); this.close(); });
+  },
+
+  close() {
+    document.getElementById("reader").classList.remove("is-open");
+    document.body.style.overflow = "";
+    if (history.replaceState) history.replaceState(null, "", "#journal");
+  },
+
+  attachReader() {
+    document.getElementById("readerClose").addEventListener("click", () => this.close());
+    document.addEventListener("keydown", e => {
+      if (e.key === "Escape" && document.getElementById("reader").classList.contains("is-open")) this.close();
+    });
+  },
+
+  maybeOpenFromHash() {
+    const m = /^#journal\/(.+)$/.exec(location.hash);
+    if (!m) return;
+    const slug = decodeURIComponent(m[1]);
+    const post = this.posts.find(p => p.slug === slug || p.id === slug);
+    if (post) this.open(post.id);
+  }
+};
+
 /* ---------- 9. Scroll reveal ---------- */
 function initReveal() {
   const io = new IntersectionObserver(entries => {
@@ -1802,6 +2181,7 @@ function initReveal() {
       }
     });
   }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+  window.__revealIO = io;
   document.querySelectorAll(".reveal").forEach(el => io.observe(el));
 }
 
@@ -1832,6 +2212,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initAuth();
   initNewsletter();
   initReveal();
+  Journal.init();
 });
 </script>
 
