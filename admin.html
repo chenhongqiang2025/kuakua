@@ -2,8 +2,19 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#FAF6F0" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14100E" media="(prefers-color-scheme: dark)" />
   <meta name="robots" content="noindex, nofollow" />
+  <meta name="format-detection" content="telephone=no" />
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="KUAKUA · Admin" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.svg" />
+
   <title>KUAKUA · Admin</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231F1A18'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23FAF6F0' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E" />
 
@@ -374,6 +385,99 @@
     .confirm__title { font-family: var(--kk-font-display); font-size: 24px; margin: 0 0 8px; }
     .confirm__body { color: var(--kk-text-soft); font-size: 14px; line-height: 1.6; margin: 0 0 24px; }
     .confirm__actions { display: flex; gap: 8px; justify-content: flex-end; }
+
+    /* =========================================================
+       iOS / mobile polish (v1.1.1)
+       - 16px form fields prevent Safari auto-zoom on focus
+       - 44×44 touch targets per Apple HIG
+       - 100dvh handles Safari URL-bar collapse
+       - env(safe-area-inset-*) handles notch / home indicator
+       ========================================================= */
+    @supports (height: 100dvh) {
+      .sidebar { max-height: calc(100dvh - 64px); }
+      .layout  { min-height: calc(100dvh - 64px); }
+      .gate    { min-height: 100dvh; }
+    }
+    @supports (padding: env(safe-area-inset-top)) {
+      .topbar {
+        padding-left: max(24px, env(safe-area-inset-left));
+        padding-right: max(24px, env(safe-area-inset-right));
+        padding-top: env(safe-area-inset-top);
+        height: calc(64px + env(safe-area-inset-top));
+      }
+      .editor  { padding-bottom: max(80px, calc(80px + env(safe-area-inset-bottom))); }
+      .sidebar { padding-left: max(24px, env(safe-area-inset-left)); }
+      .toast   { bottom: max(24px, calc(24px + env(safe-area-inset-bottom))); }
+      .gate__inner { margin-top: env(safe-area-inset-top); margin-bottom: env(safe-area-inset-bottom); }
+    }
+
+    /* Standalone PWA tweaks — when running from home screen */
+    @media (display-mode: standalone) {
+      .topbar { padding-top: max(env(safe-area-inset-top), 12px); }
+    }
+
+    /* Touch + small-screen overrides */
+    @media (max-width: 768px), (pointer: coarse) {
+      /* Prevent iOS Safari auto-zoom: form inputs must be ≥16px */
+      .field__input,
+      .field__textarea,
+      .tags input,
+      .gate__inner input,
+      .topbar__user code {
+        font-size: 16px;
+      }
+      /* Title input stays large */
+      .field__input--title { font-size: 28px; }
+      /* Larger touch targets */
+      .md-toolbar button {
+        width: 44px; height: 44px; font-size: 15px;
+      }
+      .btn--icon { width: 44px; height: 44px; }
+      .btn--sm { padding: 10px 16px; font-size: 14px; min-height: 40px; }
+      .btn       { min-height: 44px; padding: 12px 20px; }
+      .post-item { padding: 14px; }
+      .chip { padding: 6px 12px; font-size: 13px; min-height: 32px; }
+      .auth-tab, .affirm__tab { min-height: 40px; }
+    }
+
+    /* Mobile layout: stack sidebar on top, scroll naturally */
+    @media (max-width: 980px) {
+      .sidebar {
+        position: static;
+        max-height: none;
+        padding: 20px;
+      }
+      .topbar__role { display: none; }
+      .topbar__user { display: none; }
+      .editor { padding: 24px 20px 100px; }
+      .editor__head { flex-wrap: wrap; gap: 12px; }
+      .editor__head h1 { font-size: 24px; }
+      .editor__actions { width: 100%; justify-content: space-between; flex-wrap: wrap; }
+      .field__row { grid-template-columns: 1fr; gap: 12px; }
+    }
+
+    /* Very small screens: tighten everything */
+    @media (max-width: 480px) {
+      .topbar { padding: 0 16px; }
+      .topbar__brand span:not(.topbar__mark) { font-size: 18px; }
+      .gate__inner { padding: 32px 20px; }
+      .gate__title { font-size: 28px; }
+      .md-toolbar { gap: 0; }
+      .editor__actions .btn--ghost.btn--sm:not(#previewToggle) { display: none; }
+    }
+
+    /* Sticky publish bar on small screens — always-visible action */
+    @media (max-width: 640px) {
+      .editor__head {
+        position: sticky;
+        top: 64px;
+        z-index: 10;
+        background: var(--kk-bg);
+        margin: 0 -20px 16px;
+        padding: 12px 20px;
+        border-bottom: 1px solid var(--kk-border-soft);
+      }
+    }
   </style>
 </head>
 <body>
@@ -386,7 +490,7 @@
     <form class="gate__form" id="gateForm" autocomplete="off">
       <div class="field">
         <label class="field__label" for="gatePat">Personal Access Token</label>
-        <input type="password" class="field__input" id="gatePat" required placeholder="github_pat_..." autocomplete="off" spellcheck="false" />
+        <input type="password" class="field__input" id="gatePat" required placeholder="github_pat_..." autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" inputmode="text" />
         <div class="field__hint" id="gateHint">We'll verify it has access to <code>chenhongqiang2025/kuakua</code>.</div>
       </div>
       <button type="submit" class="btn btn--primary" style="width: 100%;" id="gateSubmit">Verify & continue · 验证并进入</button>
@@ -452,12 +556,12 @@
       <!-- Title -->
       <div class="field">
         <label class="field__label" for="fTitle">Title · 中文标题</label>
-        <input class="field__input field__input--title" id="fTitle" placeholder="给今天起个名字…" />
+        <input class="field__input field__input--title" id="fTitle" placeholder="给今天起个名字…" autocapitalize="sentences" />
       </div>
 
       <div class="field">
         <label class="field__label" for="fTitleEn">English title (optional)</label>
-        <input class="field__input" id="fTitleEn" placeholder="Optional English title" />
+        <input class="field__input" id="fTitleEn" placeholder="Optional English title" autocapitalize="sentences" lang="en" />
       </div>
 
       <div class="field__row">
@@ -477,14 +581,14 @@
 
       <div class="field">
         <label class="field__label" for="fSlug">Slug (URL hash)</label>
-        <input class="field__input" id="fSlug" placeholder="auto-generated" />
+        <input class="field__input" id="fSlug" placeholder="auto-generated" autocapitalize="none" autocorrect="off" spellcheck="false" inputmode="url" />
         <div class="field__hint">Used for the URL: <code id="slugPreview">#journal/...</code></div>
       </div>
 
       <div class="field">
         <label class="field__label">Tags · 标签</label>
         <div class="tags" id="tagsBox">
-          <input id="tagsInput" placeholder="Press Enter or comma to add" />
+          <input id="tagsInput" placeholder="Press Enter or comma to add" autocapitalize="none" autocorrect="off" spellcheck="false" />
         </div>
         <div class="field__hint">Examples: <code>self-love</code>, <code>founder-notes</code>, <code>weekly-letter</code></div>
       </div>
@@ -506,7 +610,7 @@
 
       <div class="field">
         <label class="field__label" for="fExcerpt">Excerpt · 摘要 (1-2 lines)</label>
-        <textarea class="field__textarea" id="fExcerpt" rows="2" placeholder="The one-line teaser for the journal grid card."></textarea>
+        <textarea class="field__textarea" id="fExcerpt" rows="2" placeholder="The one-line teaser for the journal grid card." autocapitalize="sentences"></textarea>
       </div>
 
       <div class="field">
@@ -524,7 +628,7 @@
           <button type="button" data-md="quote" title="Quote">❝</button>
           <button type="button" data-md="hr" title="Horizontal rule">—</button>
         </div>
-        <textarea class="field__textarea field__textarea--lg is-attached" id="fBody" placeholder="Write your post in Markdown..."></textarea>
+        <textarea class="field__textarea field__textarea--lg is-attached" id="fBody" placeholder="Write your post in Markdown..." autocapitalize="sentences"></textarea>
         <input type="file" id="inlineImageInput" accept="image/*" style="display: none;" />
       </div>
 

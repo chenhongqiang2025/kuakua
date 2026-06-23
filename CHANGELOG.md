@@ -1,6 +1,39 @@
+<!-- markdownlint-disable MD024 -->
 # Changelog
 
 All notable changes to the KUAKUA brand site are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/), versions follow [Semantic Versioning](https://semver.org/).
+
+## [1.1.1] — 2026-06-23
+
+### Added · iOS / mobile polish + PWA
+
+- **PWA manifest** (`manifest.json`) — both the public site and `/admin.html` can now be installed to the iPhone / Android home screen as a standalone app. App shortcuts for Journal and Admin included.
+- **SVG icon set** at `assets/icon.svg`, `assets/icon-maskable.svg`, `assets/apple-touch-icon.svg` — KUAKUA wordmark on a warm rose-gradient backdrop. Replace with PNG equivalents in v1.2 for ideal iOS rendering.
+- **`<meta name="apple-mobile-web-app-*">`** on both pages for proper iOS install behaviour (status bar, title).
+
+### Fixed · iOS Safari pain points
+
+- **Auto-zoom on form focus** — all form inputs bumped to ≥16px on touch / small-screen breakpoints to defeat Safari's "input < 16px → zoom in" behavior. Affects admin form fields, the gate PAT input, newsletter email, sign-in / sign-up modals.
+- **Touch target sizes** — all buttons, icon-buttons, language toggle, theme toggle, mobile menu button, auth tabs, and the Markdown toolbar now meet the Apple HIG 44×44 minimum on touch devices.
+- **100vh URL-bar collapse** — replaced with `100dvh` (with `100vh` fallback) on hero, reader, sidebar, layout, and gate so the bottom never gets clipped when Safari's URL bar shrinks.
+- **Notch / home indicator** — `env(safe-area-inset-*)` applied to nav, topbar, sidebar, editor, reader close button, footer, toast, and gate. iPhone 14 Pro etc. no longer have content under the camera cutout.
+- **Standalone PWA mode** — extra top padding when launched from the home screen so the dynamic island / notch doesn't overlap the nav.
+- **Mobile keyboard hints** — added `autocapitalize`, `autocorrect`, `spellcheck`, `inputmode` on every input so iOS shows the right keyboard (email keyboard for `@`, URL keyboard for slugs, no auto-capitalize for tokens/slugs/tags/emails).
+- **Sticky editor action bar** on small screens so Publish / Preview / Delete are always reachable while writing a long post.
+- **`format-detection telephone=no`** so iOS doesn't auto-linkify numbers as tap-to-call.
+
+### Changed
+
+- Public site `<meta viewport>` now includes `maximum-scale=5` so users can still pinch-zoom (accessibility), but auto-zoom is disabled.
+- Footer version pill bumped to `v1.1.1`.
+
+### How to install to iPhone home screen
+
+1. Open <https://chenhongqiang2025.github.io/kuakua/> in Safari.
+2. Tap the share icon → **Add to Home Screen**.
+3. Same for `admin.html` — install once, launch like an app.
+
+[1.1.1]: https://github.com/chenhongqiang2025/kuakua/releases/tag/v1.1.1
 
 ## [1.1.0] — 2026-06-23
 

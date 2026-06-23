@@ -1,0 +1,42 @@
+{
+  "name": "KUAKUA 夸夸",
+  "short_name": "KUAKUA",
+  "description": "A self-love lifestyle brand. Romanticize yourself.",
+  "id": "/kuakua/",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF6F0",
+  "theme_color": "#FAF6F0",
+  "lang": "en",
+  "categories": ["lifestyle", "wellness"],
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Journal",
+      "short_name": "Journal",
+      "url": "./#journal",
+      "description": "Read recent journal entries"
+    },
+    {
+      "name": "Admin",
+      "short_name": "Admin",
+      "url": "./admin.html",
+      "description": "Publish a new journal post"
+    }
+  ]
+}

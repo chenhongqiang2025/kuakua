@@ -8,7 +8,7 @@ Founded by **陈宏强 Richard Chen × 刘婷 Tina Liu**
 
 This repository is the **public-facing brand website** for KUAKUA — a single, dependency-free `index.html` designed for GitHub Pages and permanent international maintenance.
 
-**Current version:** `v1.1.0` (2026-06-23)
+**Current version:** `v1.1.1` (2026-06-23)
 
 ---
 
@@ -120,6 +120,24 @@ git push --tags
 ```
 
 ---
+
+## Installing to iPhone / Android home screen (PWA)
+
+Since v1.1.1, KUAKUA ships a Web App Manifest so both the public site and the admin behave like native apps when added to the home screen.
+
+### On iPhone (Safari)
+
+1. Open <https://chenhongqiang2025.github.io/kuakua/> (or `.../admin.html`)
+2. Tap the **Share** icon → **Add to Home Screen** → **Add**
+3. Launch from the home screen — runs full-screen, no Safari URL bar, fast like an app
+
+### On Android (Chrome)
+
+1. Open the same URL
+2. Tap the menu → **Add to Home screen** (or you may see a prompt)
+3. Confirm
+
+The icon is currently an SVG (warm rose-gold KUAKUA wordmark). Modern iOS / Android render SVG icons fine. For pixel-perfect iOS rendering, a future v1.2 will ship the same artwork as PNGs.
 
 ## Publishing posts via the Admin CMS
 
