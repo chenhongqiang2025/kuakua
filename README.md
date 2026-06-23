@@ -8,7 +8,7 @@ Founded by **陈宏强 Richard Chen × 刘婷 Tina Liu**
 
 This repository is the **public-facing brand website** for KUAKUA — a single, dependency-free `index.html` designed for GitHub Pages and permanent international maintenance.
 
-**Current version:** `v1.1.1` (2026-06-23)
+**Current version:** `v1.1.2` (2026-06-23)
 
 ---
 
@@ -154,8 +154,7 @@ The admin commits directly to this repo from your browser, so it needs a token w
    - **Token name** → `KUAKUA admin`
    - **Expiration** → 1 year (or whatever you're comfortable rotating)
    - **Repository access** → *Only select repositories* → pick `chenhongqiang2025/kuakua`
-   - **Repository permissions** → expand the list, set **Contents: Read and write**.
-     (Metadata: Read-only will be auto-checked.)
+   - **Repository permissions** → expand the list, find **Contents** and set it to **Read and write** — *not* `Access: read-only`. This is the most common mistake; a Read-only token will let you sign into admin but every Publish call returns 403. (Metadata: Read-only is auto-checked, leave it.)
 4. Click **Generate token**, copy it once (GitHub will only show it this one time).
 5. Open the admin page, paste the token, hit **Verify & continue**.
 6. The token is stored in your browser's `localStorage` for this device only. Sign out wipes it.

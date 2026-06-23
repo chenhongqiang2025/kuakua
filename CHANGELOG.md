@@ -3,6 +3,25 @@
 
 All notable changes to the KUAKUA brand site are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/), versions follow [Semantic Versioning](https://semver.org/).
 
+## [1.1.2] — 2026-06-23
+
+### Fixed · catch PAT permission errors at login, not at publish time
+
+A Read-only fine-grained PAT used to pass admin's gate (because the gate only did `GET /user` + `GET /repos/...`, both readable), then fail every Publish with a cryptic GitHub 403 ("Resource not accessible by personal access token"). This patch closes that gap.
+
+- **Gate now demands write capability.** `ghVerifyPat()` reads the `permissions.push` field from `GET /repos/{owner}/{repo}` (which, for fine-grained PATs, reflects the token's effective permission on this repo). If `push !== true`, the gate refuses to let you in and explains exactly what to fix.
+- **Specific error codes on every API failure.** The shared `gh()` helper now tags each non-OK response with `e.code` ∈ `{ WRITE_DENIED, NOT_FOUND, BAD_TOKEN }` so callers can branch on cause rather than parsing strings.
+- **Actionable error messages everywhere.**
+  - Gate: distinguishes "token rejected (401)" from "repo not in scope (404)" from "no write permission (403)" — each with a sentence on what to change in the GitHub token UI and a link to the regenerate page.
+  - Publish / Delete / Image upload: when a token gets revoked or downgraded mid-session, the toast now says "Sign out, regenerate with Contents: Read & write" instead of dumping the raw GitHub response.
+- **README clarified.** The PAT setup step now calls out that `Contents` must be `Read and write`, not the misleadingly-named `Access: read-only`. This is the single most common mistake.
+
+### Why this matters
+
+The point of the admin is to be a real, durable tool — not a "click around and find out" experiment. Every error you can hit during normal use should tell you what to do, not what HTTP status was returned.
+
+[1.1.2]: https://github.com/chenhongqiang2025/kuakua/releases/tag/v1.1.2
+
 ## [1.1.1] — 2026-06-23
 
 ### Added · iOS / mobile polish + PWA
