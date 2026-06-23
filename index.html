@@ -1,0 +1,1839 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-locale="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#FAF6F0" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#14100E" media="(prefers-color-scheme: dark)" />
+  <meta name="description" content="KUAKUA 夸夸 — A self-love lifestyle brand. Romanticize yourself. Pretty mind. Pretty life." />
+  <meta name="author" content="KUAKUA — Richard Chen × Tina Liu" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="KUAKUA 夸夸 — Romanticize yourself" />
+  <meta property="og:description" content="A self-love lifestyle brand. Become the woman you most admire." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="zh_CN" />
+
+  <title>KUAKUA 夸夸 — Romanticize yourself</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Inline SVG favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23B5837A'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='18' font-style='italic' fill='%23FAF6F0' text-anchor='middle'%3EK%3C/text%3E%3C/svg%3E" />
+
+  <style>
+    /* =========================================================
+       KUAKUA — Brand Token System
+       Edit these tokens to evolve the brand. Components below
+       all consume these tokens — no hard-coded colors elsewhere.
+       ========================================================= */
+    :root {
+      /* --- Light palette (default) --- */
+      --kk-bg:           #FAF6F0;
+      --kk-bg-elev:      #F1E9DE;
+      --kk-bg-deep:      #E8D4C8;
+      --kk-surface:      #FFFFFF;
+      --kk-text:         #1F1A18;
+      --kk-text-soft:    #4A4340;
+      --kk-text-muted:   #8A7F79;
+      --kk-accent:       #B5837A;
+      --kk-accent-deep:  #8A5D58;
+      --kk-accent-soft:  #E8D4C8;
+      --kk-border:       #E2D6CB;
+      --kk-border-soft:  #EDE4D9;
+      --kk-shadow:       0 1px 2px rgba(31, 26, 24, 0.04), 0 8px 32px rgba(31, 26, 24, 0.06);
+      --kk-shadow-lg:    0 16px 48px rgba(31, 26, 24, 0.12);
+
+      /* --- Type scale --- */
+      --kk-font-display: "Cormorant Garamond", "Noto Serif SC", Georgia, "Songti SC", serif;
+      --kk-font-body:    "Inter", "Noto Sans SC", -apple-system, "Helvetica Neue", "PingFang SC", sans-serif;
+      --kk-font-mono:    "SF Mono", "JetBrains Mono", Consolas, monospace;
+
+      /* --- Layout --- */
+      --kk-container:    1280px;
+      --kk-container-narrow: 880px;
+      --kk-radius-sm:    6px;
+      --kk-radius:       12px;
+      --kk-radius-lg:    24px;
+      --kk-radius-pill:  999px;
+
+      /* --- Motion --- */
+      --kk-ease:         cubic-bezier(0.22, 0.61, 0.36, 1);
+      --kk-dur-fast:     180ms;
+      --kk-dur:          320ms;
+      --kk-dur-slow:     680ms;
+
+      /* --- Nav --- */
+      --kk-nav-h:        72px;
+    }
+
+    [data-theme="dark"] {
+      --kk-bg:           #14100E;
+      --kk-bg-elev:      #1F1815;
+      --kk-bg-deep:      #2A1F1A;
+      --kk-surface:      #1F1815;
+      --kk-text:         #F5EDE5;
+      --kk-text-soft:    #C9BCB1;
+      --kk-text-muted:   #847770;
+      --kk-accent:       #D4A292;
+      --kk-accent-deep:  #E8B8A8;
+      --kk-accent-soft:  #3D2A24;
+      --kk-border:       #2F2520;
+      --kk-border-soft:  #241B17;
+      --kk-shadow:       0 1px 2px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.5);
+      --kk-shadow-lg:    0 16px 48px rgba(0,0,0,0.7);
+    }
+
+    /* =========================================================
+       Reset + base
+       ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--kk-font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--kk-text);
+      background: var(--kk-bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background var(--kk-dur) var(--kk-ease), color var(--kk-dur) var(--kk-ease);
+      overflow-x: hidden;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+    input, textarea, select { font-family: inherit; font-size: inherit; color: inherit; }
+    :focus-visible { outline: 2px solid var(--kk-accent); outline-offset: 3px; border-radius: 4px; }
+    ::selection { background: var(--kk-accent); color: var(--kk-bg); }
+
+    /* Chinese locale loads with Noto stack first for native rendering */
+    html[data-locale="zh"] body {
+      font-family: "Noto Sans SC", "Inter", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    html[data-locale="zh"] .display,
+    html[data-locale="zh"] h1, html[data-locale="zh"] h2, html[data-locale="zh"] h3 {
+      font-family: "Noto Serif SC", "Cormorant Garamond", "Songti SC", serif;
+      letter-spacing: 0.02em;
+    }
+
+    /* =========================================================
+       Typography
+       ========================================================= */
+    .display, h1, h2, h3 {
+      font-family: var(--kk-font-display);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.05;
+      color: var(--kk-text);
+      margin: 0;
+    }
+    .display-xl   { font-size: clamp(48px, 9vw, 132px); font-weight: 300; letter-spacing: -0.02em; }
+    .display-lg   { font-size: clamp(40px, 6.4vw, 88px); font-weight: 400; }
+    .display-md   { font-size: clamp(32px, 4.4vw, 56px); font-weight: 400; }
+    .display-sm   { font-size: clamp(26px, 3.2vw, 40px); font-weight: 500; }
+
+    .eyebrow {
+      font-family: var(--kk-font-body);
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--kk-text-muted);
+      display: inline-block;
+    }
+    .lead {
+      font-size: clamp(16px, 1.5vw, 19px);
+      line-height: 1.65;
+      color: var(--kk-text-soft);
+      max-width: 60ch;
+    }
+    .italic { font-style: italic; }
+
+    /* =========================================================
+       Layout primitives
+       ========================================================= */
+    .container { width: 100%; max-width: var(--kk-container); margin: 0 auto; padding: 0 32px; }
+    .container--narrow { max-width: var(--kk-container-narrow); }
+    @media (max-width: 640px) { .container { padding: 0 20px; } }
+
+    section { padding: clamp(80px, 12vw, 160px) 0; position: relative; }
+    section + section { border-top: 1px solid var(--kk-border-soft); }
+
+    /* =========================================================
+       Buttons + Links
+       ========================================================= */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--kk-radius-pill);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--kk-dur) var(--kk-ease);
+      white-space: nowrap;
+      border: 1px solid transparent;
+    }
+    .btn--primary {
+      background: var(--kk-text);
+      color: var(--kk-bg);
+    }
+    .btn--primary:hover { background: var(--kk-accent-deep); transform: translateY(-1px); }
+    .btn--ghost {
+      background: transparent;
+      color: var(--kk-text);
+      border-color: var(--kk-border);
+    }
+    .btn--ghost:hover { border-color: var(--kk-text); }
+    .btn--accent {
+      background: var(--kk-accent);
+      color: var(--kk-bg);
+    }
+    .btn--accent:hover { background: var(--kk-accent-deep); }
+    .btn--sm { padding: 10px 18px; font-size: 12px; }
+    .btn--lg { padding: 18px 36px; font-size: 14px; }
+
+    .link-underline {
+      position: relative;
+      display: inline-block;
+      padding-bottom: 2px;
+    }
+    .link-underline::after {
+      content: ""; position: absolute; left: 0; bottom: 0;
+      width: 100%; height: 1px; background: currentColor;
+      transform-origin: right; transform: scaleX(1);
+      transition: transform var(--kk-dur) var(--kk-ease);
+    }
+    .link-underline:hover::after { transform-origin: left; transform: scaleX(0.4); }
+
+    /* =========================================================
+       Top Nav
+       ========================================================= */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--kk-nav-h);
+      background: color-mix(in srgb, var(--kk-bg) 88%, transparent);
+      backdrop-filter: saturate(180%) blur(16px);
+      -webkit-backdrop-filter: saturate(180%) blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--kk-dur) var(--kk-ease), background var(--kk-dur) var(--kk-ease);
+    }
+    .nav.is-scrolled { border-color: var(--kk-border-soft); }
+    .nav__inner {
+      height: 100%;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 24px;
+      max-width: var(--kk-container);
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    @media (max-width: 640px) { .nav__inner { padding: 0 20px; } }
+
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--kk-font-display);
+      font-weight: 500;
+      font-size: 22px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--kk-text);
+    }
+    .brand__mark {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--kk-accent-soft), var(--kk-accent));
+      box-shadow: inset 0 0 0 1px var(--kk-accent-deep);
+      flex-shrink: 0;
+    }
+    .brand__cn { font-family: var(--kk-font-display); font-style: italic; font-weight: 400; font-size: 16px; color: var(--kk-text-muted); margin-left: 4px; }
+    html[data-locale="zh"] .brand__cn { font-family: "Noto Serif SC", serif; font-style: normal; }
+
+    .nav__links {
+      display: flex; align-items: center; justify-content: center;
+      gap: 36px;
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .nav__links a { color: var(--kk-text-soft); transition: color var(--kk-dur-fast) var(--kk-ease); }
+    .nav__links a:hover { color: var(--kk-text); }
+
+    .nav__actions {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .icon-btn {
+      width: 38px; height: 38px;
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      color: var(--kk-text-soft);
+      transition: all var(--kk-dur-fast) var(--kk-ease);
+    }
+    .icon-btn:hover { background: var(--kk-bg-elev); color: var(--kk-text); }
+    .icon-btn svg { width: 18px; height: 18px; }
+
+    .lang-toggle {
+      display: inline-flex; align-items: center;
+      padding: 0 12px; height: 36px;
+      border-radius: var(--kk-radius-pill);
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--kk-text-soft);
+      border: 1px solid var(--kk-border);
+      transition: all var(--kk-dur-fast) var(--kk-ease);
+    }
+    .lang-toggle:hover { color: var(--kk-text); border-color: var(--kk-text); }
+    .lang-toggle__sep { opacity: 0.4; margin: 0 6px; }
+    .lang-toggle__on { color: var(--kk-text); font-weight: 700; }
+
+    .nav__menu-btn {
+      display: none;
+      width: 42px; height: 42px;
+      align-items: center; justify-content: center;
+      border-radius: 50%;
+    }
+    .nav__menu-btn span {
+      display: block; width: 18px; height: 1.5px;
+      background: var(--kk-text); position: relative;
+      transition: all var(--kk-dur) var(--kk-ease);
+    }
+    .nav__menu-btn span::before,
+    .nav__menu-btn span::after {
+      content: ""; position: absolute; left: 0; width: 18px; height: 1.5px;
+      background: var(--kk-text);
+      transition: all var(--kk-dur) var(--kk-ease);
+    }
+    .nav__menu-btn span::before { top: -6px; }
+    .nav__menu-btn span::after  { top:  6px; }
+    .nav.is-menu-open .nav__menu-btn span { background: transparent; }
+    .nav.is-menu-open .nav__menu-btn span::before { top: 0; transform: rotate(45deg); }
+    .nav.is-menu-open .nav__menu-btn span::after  { top: 0; transform: rotate(-45deg); }
+
+    @media (max-width: 980px) {
+      .nav__links { display: none; }
+      .nav__menu-btn { display: inline-flex; }
+      .nav__actions .btn--join-desktop { display: none; }
+    }
+
+    /* =========================================================
+       Mobile menu (slide-in)
+       ========================================================= */
+    .mobile-menu {
+      position: fixed; inset: var(--kk-nav-h) 0 0 0; z-index: 90;
+      background: var(--kk-bg);
+      padding: 48px 32px;
+      transform: translateY(-100%);
+      transition: transform var(--kk-dur-slow) var(--kk-ease);
+      visibility: hidden;
+      overflow-y: auto;
+    }
+    .nav.is-menu-open + .mobile-menu { transform: translateY(0); visibility: visible; }
+    .mobile-menu ul { list-style: none; padding: 0; margin: 0; }
+    .mobile-menu li { border-bottom: 1px solid var(--kk-border-soft); }
+    .mobile-menu a {
+      display: block; padding: 20px 0;
+      font-family: var(--kk-font-display);
+      font-size: 32px; font-weight: 400;
+      color: var(--kk-text);
+    }
+    .mobile-menu__cta { margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+    /* =========================================================
+       Hero
+       ========================================================= */
+    .hero {
+      min-height: 100vh;
+      padding-top: calc(var(--kk-nav-h) + 60px);
+      padding-bottom: 80px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ""; position: absolute;
+      top: -10%; right: -20%; width: 80vw; height: 80vw; max-width: 1100px; max-height: 1100px;
+      background: radial-gradient(circle at center, var(--kk-accent-soft), transparent 60%);
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+    [data-theme="dark"] .hero::before { opacity: 0.25; }
+
+    .hero__inner { position: relative; z-index: 1; }
+    .hero__eyebrow { margin-bottom: 28px; }
+    .hero__title {
+      font-size: clamp(56px, 11.5vw, 180px);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      font-weight: 300;
+      max-width: 1100px;
+      margin: 0 0 32px;
+    }
+    .hero__title em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--kk-accent-deep);
+    }
+    [data-theme="dark"] .hero__title em { color: var(--kk-accent-deep); }
+    .hero__sub { max-width: 56ch; margin-bottom: 48px; }
+    .hero__cta { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+
+    .scroll-cue {
+      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+      font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--kk-text-muted);
+      display: flex; flex-direction: column; align-items: center; gap: 12px;
+    }
+    .scroll-cue::after {
+      content: ""; width: 1px; height: 36px;
+      background: linear-gradient(to bottom, var(--kk-text-muted), transparent);
+      animation: scrollPulse 2.4s var(--kk-ease) infinite;
+    }
+    @keyframes scrollPulse { 0%, 100% { transform: scaleY(1); opacity: 1; } 50% { transform: scaleY(0.4); opacity: 0.3; } }
+
+    /* =========================================================
+       Manifesto
+       ========================================================= */
+    .manifesto { background: var(--kk-bg-elev); }
+    .manifesto__grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: clamp(40px, 8vw, 120px);
+      align-items: start;
+    }
+    @media (max-width: 880px) { .manifesto__grid { grid-template-columns: 1fr; } }
+    .manifesto__quote {
+      font-family: var(--kk-font-display);
+      font-style: italic;
+      font-size: clamp(28px, 3.6vw, 44px);
+      line-height: 1.25;
+      color: var(--kk-text);
+      font-weight: 300;
+    }
+    html[data-locale="zh"] .manifesto__quote { font-style: normal; font-family: "Noto Serif SC", serif; }
+    .manifesto__quote::before { content: "“"; display: block; font-size: 1.6em; line-height: 0.6; color: var(--kk-accent); margin-bottom: 16px; }
+    .manifesto__body p + p { margin-top: 1.4em; }
+    .manifesto__signature {
+      margin-top: 48px;
+      display: flex; align-items: center; gap: 16px;
+      font-family: var(--kk-font-display);
+      font-style: italic;
+      color: var(--kk-text-soft);
+    }
+    .manifesto__signature::before {
+      content: ""; width: 40px; height: 1px; background: var(--kk-text-muted);
+    }
+
+    /* =========================================================
+       Pillars
+       ========================================================= */
+    .pillars__head { text-align: center; margin-bottom: 80px; }
+    .pillars__head .eyebrow { margin-bottom: 16px; }
+    .pillars__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--kk-border-soft);
+      border: 1px solid var(--kk-border-soft);
+      border-radius: var(--kk-radius);
+      overflow: hidden;
+    }
+    @media (max-width: 980px) { .pillars__grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .pillars__grid { grid-template-columns: 1fr; } }
+    .pillar {
+      background: var(--kk-bg);
+      padding: 48px 36px 56px;
+      transition: background var(--kk-dur) var(--kk-ease);
+      display: flex; flex-direction: column; gap: 16px;
+      min-height: 360px;
+    }
+    .pillar:hover { background: var(--kk-bg-elev); }
+    .pillar__num {
+      font-family: var(--kk-font-display);
+      font-style: italic; font-size: 14px; color: var(--kk-accent-deep);
+      letter-spacing: 0.1em;
+    }
+    .pillar__title {
+      font-family: var(--kk-font-display);
+      font-size: 28px; font-weight: 500;
+      margin-bottom: 8px;
+    }
+    .pillar__title em { font-style: italic; color: var(--kk-accent); font-weight: 400; display: block; font-size: 14px; letter-spacing: 0.06em; margin-top: 4px; text-transform: uppercase; }
+    .pillar__body { color: var(--kk-text-soft); font-size: 15px; line-height: 1.7; }
+    .pillar__icon {
+      width: 36px; height: 36px;
+      color: var(--kk-accent);
+      margin-bottom: 20px;
+    }
+
+    /* =========================================================
+       Affirmations carousel
+       ========================================================= */
+    .affirmations {
+      background: linear-gradient(180deg, var(--kk-bg) 0%, var(--kk-bg-elev) 100%);
+    }
+    .affirm__head { text-align: center; margin-bottom: 64px; }
+    .affirm__head .eyebrow { margin-bottom: 16px; }
+    .affirm__tabs {
+      display: flex; justify-content: center; gap: 8px;
+      flex-wrap: wrap; margin-bottom: 56px;
+    }
+    .affirm__tab {
+      padding: 10px 22px;
+      border-radius: var(--kk-radius-pill);
+      font-size: 12px; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--kk-text-soft);
+      border: 1px solid var(--kk-border);
+      background: var(--kk-bg);
+      transition: all var(--kk-dur) var(--kk-ease);
+    }
+    .affirm__tab:hover { border-color: var(--kk-text-soft); }
+    .affirm__tab.is-active { background: var(--kk-text); color: var(--kk-bg); border-color: var(--kk-text); }
+
+    .affirm__stage {
+      position: relative;
+      max-width: 880px;
+      margin: 0 auto;
+      min-height: 320px;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+    }
+    .affirm__card {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 40px 24px;
+      opacity: 0; transform: translateY(12px);
+      transition: opacity var(--kk-dur-slow) var(--kk-ease), transform var(--kk-dur-slow) var(--kk-ease);
+      pointer-events: none;
+    }
+    .affirm__card.is-active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .affirm__text {
+      font-family: var(--kk-font-display);
+      font-style: italic;
+      font-size: clamp(28px, 4.4vw, 56px);
+      font-weight: 300;
+      line-height: 1.25;
+      color: var(--kk-text);
+      max-width: 24ch;
+    }
+    html[data-locale="zh"] .affirm__text { font-style: normal; font-family: "Noto Serif SC", serif; }
+    .affirm__attribution { margin-top: 32px; color: var(--kk-text-muted); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; }
+
+    .affirm__dots {
+      display: flex; justify-content: center; gap: 8px;
+      margin-top: 40px;
+    }
+    .affirm__dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--kk-border);
+      transition: all var(--kk-dur) var(--kk-ease);
+    }
+    .affirm__dot.is-active { background: var(--kk-accent); width: 24px; border-radius: var(--kk-radius-pill); }
+
+    /* =========================================================
+       Products
+       ========================================================= */
+    .products__head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 64px; gap: 32px; flex-wrap: wrap; }
+    .products__title { max-width: 16ch; }
+    .products__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 980px) { .products__grid { grid-template-columns: 1fr; } }
+    .product {
+      background: var(--kk-bg-elev);
+      border-radius: var(--kk-radius-lg);
+      overflow: hidden;
+      transition: transform var(--kk-dur) var(--kk-ease), box-shadow var(--kk-dur) var(--kk-ease);
+      cursor: pointer;
+      display: flex; flex-direction: column;
+    }
+    .product:hover { transform: translateY(-4px); box-shadow: var(--kk-shadow-lg); }
+    .product__media {
+      aspect-ratio: 4/5;
+      background: var(--kk-bg-deep);
+      position: relative;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .product__media::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(135deg, var(--kk-accent-soft) 0%, transparent 100%);
+    }
+    .product__visual {
+      position: relative; z-index: 1;
+      font-family: var(--kk-font-display);
+      font-style: italic;
+      font-size: clamp(40px, 5vw, 72px);
+      color: var(--kk-accent-deep);
+      text-align: center;
+      padding: 32px;
+      line-height: 1.1;
+    }
+    [data-theme="dark"] .product__visual { color: var(--kk-accent); }
+    html[data-locale="zh"] .product__visual { font-style: normal; font-family: "Noto Serif SC", serif; }
+
+    .product__body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
+    .product__tag {
+      font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--kk-text-muted); margin-bottom: 8px;
+    }
+    .product__name { font-family: var(--kk-font-display); font-size: 26px; margin-bottom: 8px; }
+    .product__desc { color: var(--kk-text-soft); font-size: 14px; line-height: 1.6; flex: 1; }
+    .product__foot { margin-top: 24px; display: flex; justify-content: space-between; align-items: center; }
+    .product__price { font-weight: 500; color: var(--kk-text); }
+    .product__badge {
+      font-size: 11px; padding: 4px 10px; border-radius: var(--kk-radius-pill);
+      background: var(--kk-accent-soft); color: var(--kk-accent-deep);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    [data-theme="dark"] .product__badge { color: var(--kk-accent); }
+
+    /* =========================================================
+       Community / Newsletter
+       ========================================================= */
+    .community {
+      background: var(--kk-text);
+      color: var(--kk-bg);
+    }
+    .community * { color: var(--kk-bg); }
+    .community .eyebrow { color: var(--kk-accent); }
+    .community__inner {
+      max-width: var(--kk-container-narrow);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .community__title { margin-bottom: 24px; }
+    .community__lead {
+      color: rgba(250, 246, 240, 0.7);
+      max-width: 56ch; margin: 0 auto 48px;
+    }
+    .newsletter {
+      display: flex; gap: 8px; max-width: 480px; margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .newsletter input {
+      flex: 1; min-width: 220px;
+      padding: 16px 22px;
+      border-radius: var(--kk-radius-pill);
+      border: 1px solid rgba(250, 246, 240, 0.25);
+      background: rgba(250, 246, 240, 0.06);
+      color: var(--kk-bg);
+      font-size: 14px;
+      transition: all var(--kk-dur) var(--kk-ease);
+    }
+    .newsletter input::placeholder { color: rgba(250, 246, 240, 0.5); }
+    .newsletter input:focus { background: rgba(250, 246, 240, 0.12); border-color: var(--kk-accent); outline: none; }
+    .newsletter .btn--accent { background: var(--kk-accent); color: var(--kk-text); }
+    .newsletter .btn--accent:hover { background: var(--kk-bg); }
+    .newsletter__note { font-size: 12px; color: rgba(250, 246, 240, 0.5); margin-top: 16px; }
+
+    /* =========================================================
+       Founders
+       ========================================================= */
+    .founders__head { text-align: center; margin-bottom: 80px; }
+    .founders__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px;
+    }
+    @media (max-width: 760px) { .founders__grid { grid-template-columns: 1fr; } }
+    .founder { text-align: center; }
+    .founder__avatar {
+      width: 140px; height: 140px; margin: 0 auto 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--kk-accent-soft), var(--kk-accent));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--kk-font-display);
+      font-style: italic;
+      font-size: 56px;
+      color: var(--kk-bg);
+      box-shadow: var(--kk-shadow);
+    }
+    .founder__name { font-family: var(--kk-font-display); font-size: 32px; font-weight: 500; margin-bottom: 4px; }
+    .founder__role { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--kk-text-muted); margin-bottom: 20px; }
+    .founder__bio { color: var(--kk-text-soft); font-size: 15px; max-width: 32ch; margin: 0 auto; line-height: 1.7; }
+
+    /* =========================================================
+       Footer
+       ========================================================= */
+    .footer {
+      background: var(--kk-bg-elev);
+      border-top: 1px solid var(--kk-border-soft);
+      padding: 80px 0 40px;
+    }
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 64px;
+    }
+    @media (max-width: 880px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .footer__grid { grid-template-columns: 1fr; } }
+    .footer__brand-block { max-width: 36ch; }
+    .footer__tagline { margin-top: 16px; color: var(--kk-text-soft); font-style: italic; font-family: var(--kk-font-display); }
+    html[data-locale="zh"] .footer__tagline { font-style: normal; font-family: "Noto Serif SC", serif; }
+    .footer__col h4 {
+      font-family: var(--kk-font-body);
+      font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--kk-text-muted);
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .footer__col ul { list-style: none; padding: 0; margin: 0; }
+    .footer__col li { margin-bottom: 12px; }
+    .footer__col a { color: var(--kk-text-soft); font-size: 14px; transition: color var(--kk-dur-fast) var(--kk-ease); }
+    .footer__col a:hover { color: var(--kk-text); }
+    .footer__bottom {
+      padding-top: 32px;
+      border-top: 1px solid var(--kk-border-soft);
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; flex-wrap: wrap;
+      font-size: 12px; color: var(--kk-text-muted);
+    }
+    .footer__version {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: var(--kk-radius-pill);
+      background: var(--kk-bg); border: 1px solid var(--kk-border-soft);
+      font-family: var(--kk-font-mono);
+      font-size: 11px;
+      color: var(--kk-text-muted);
+    }
+    .footer__version::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #6BCB77; }
+
+    /* =========================================================
+       Modal (auth)
+       ========================================================= */
+    .modal {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(31, 26, 24, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0; visibility: hidden;
+      transition: all var(--kk-dur) var(--kk-ease);
+    }
+    [data-theme="dark"] .modal { background: rgba(0, 0, 0, 0.7); }
+    .modal.is-open { opacity: 1; visibility: visible; }
+    .modal__panel {
+      background: var(--kk-surface);
+      border-radius: var(--kk-radius-lg);
+      width: 100%; max-width: 480px;
+      padding: 48px 40px 40px;
+      box-shadow: var(--kk-shadow-lg);
+      transform: translateY(20px) scale(0.98);
+      transition: transform var(--kk-dur-slow) var(--kk-ease);
+      position: relative;
+    }
+    .modal.is-open .modal__panel { transform: translateY(0) scale(1); }
+    @media (max-width: 480px) { .modal__panel { padding: 36px 24px 28px; } }
+    .modal__close {
+      position: absolute; top: 16px; right: 16px;
+      width: 36px; height: 36px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--kk-text-muted);
+      transition: all var(--kk-dur-fast) var(--kk-ease);
+    }
+    .modal__close:hover { background: var(--kk-bg-elev); color: var(--kk-text); }
+    .modal__title { font-family: var(--kk-font-display); font-size: 36px; margin-bottom: 8px; }
+    .modal__sub { color: var(--kk-text-soft); margin-bottom: 32px; font-size: 14px; }
+
+    .auth-tabs { display: flex; gap: 4px; padding: 4px; background: var(--kk-bg-elev); border-radius: var(--kk-radius-pill); margin-bottom: 28px; }
+    .auth-tab {
+      flex: 1; padding: 10px;
+      border-radius: var(--kk-radius-pill);
+      font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--kk-text-muted);
+      transition: all var(--kk-dur) var(--kk-ease);
+    }
+    .auth-tab.is-active { background: var(--kk-surface); color: var(--kk-text); box-shadow: var(--kk-shadow); }
+
+    .form-field { margin-bottom: 16px; }
+    .form-field label { display: block; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--kk-text-muted); margin-bottom: 6px; font-weight: 500; }
+    .form-field input {
+      width: 100%;
+      padding: 14px 18px;
+      border-radius: var(--kk-radius);
+      border: 1px solid var(--kk-border);
+      background: var(--kk-bg);
+      color: var(--kk-text);
+      font-size: 15px;
+      transition: all var(--kk-dur) var(--kk-ease);
+    }
+    .form-field input:focus {
+      outline: none; border-color: var(--kk-accent);
+      background: var(--kk-surface);
+    }
+    .form-field .form-error {
+      display: none; margin-top: 6px;
+      font-size: 12px; color: #B5837A;
+    }
+    .form-field.is-error input { border-color: #B5837A; }
+    .form-field.is-error .form-error { display: block; }
+    .form-submit { width: 100%; margin-top: 8px; }
+    .form-hint { font-size: 12px; color: var(--kk-text-muted); margin-top: 16px; text-align: center; line-height: 1.6; }
+    .form-success {
+      padding: 16px; border-radius: var(--kk-radius);
+      background: var(--kk-accent-soft); color: var(--kk-accent-deep);
+      font-size: 14px; text-align: center;
+      margin-bottom: 16px;
+      display: none;
+    }
+    [data-theme="dark"] .form-success { color: var(--kk-accent); }
+    .form-success.is-shown { display: block; }
+
+    .auth-form { display: none; }
+    .auth-form.is-active { display: block; }
+
+    /* =========================================================
+       Scroll reveal
+       ========================================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 800ms var(--kk-ease), transform 800ms var(--kk-ease);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal--delay-1 { transition-delay: 100ms; }
+    .reveal--delay-2 { transition-delay: 200ms; }
+    .reveal--delay-3 { transition-delay: 300ms; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* =========================================================
+       Toast
+       ========================================================= */
+    .toast {
+      position: fixed; bottom: 32px; left: 50%; transform: translate(-50%, 24px);
+      z-index: 300;
+      background: var(--kk-text); color: var(--kk-bg);
+      padding: 14px 24px;
+      border-radius: var(--kk-radius-pill);
+      font-size: 14px;
+      box-shadow: var(--kk-shadow-lg);
+      opacity: 0; visibility: hidden;
+      transition: all var(--kk-dur) var(--kk-ease);
+    }
+    .toast.is-shown { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+  </style>
+</head>
+<body>
+
+<!-- =========================================================
+     Top Navigation
+     ========================================================= -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#top" class="brand" aria-label="KUAKUA — home">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span>KUAKUA</span>
+      <span class="brand__cn" data-i18n="brand.cn">夸夸</span>
+    </a>
+
+    <ul class="nav__links" role="menubar">
+      <li role="none"><a role="menuitem" href="#manifesto" data-i18n="nav.manifesto">Manifesto</a></li>
+      <li role="none"><a role="menuitem" href="#pillars" data-i18n="nav.pillars">Pillars</a></li>
+      <li role="none"><a role="menuitem" href="#affirmations" data-i18n="nav.affirmations">Affirmations</a></li>
+      <li role="none"><a role="menuitem" href="#products" data-i18n="nav.products">Shop</a></li>
+      <li role="none"><a role="menuitem" href="#founders" data-i18n="nav.about">About</a></li>
+    </ul>
+
+    <div class="nav__actions">
+      <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+        <span class="lang-toggle__en">EN</span>
+        <span class="lang-toggle__sep">·</span>
+        <span class="lang-toggle__zh">中</span>
+      </button>
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <button class="btn btn--ghost btn--sm btn--join-desktop" data-open-auth data-i18n="nav.join">Join</button>
+      <button class="nav__menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <ul>
+    <li><a href="#manifesto" data-i18n="nav.manifesto">Manifesto</a></li>
+    <li><a href="#pillars" data-i18n="nav.pillars">Pillars</a></li>
+    <li><a href="#affirmations" data-i18n="nav.affirmations">Affirmations</a></li>
+    <li><a href="#products" data-i18n="nav.products">Shop</a></li>
+    <li><a href="#founders" data-i18n="nav.about">About</a></li>
+  </ul>
+  <div class="mobile-menu__cta">
+    <button class="btn btn--primary" data-open-auth data-i18n="nav.join">Join</button>
+  </div>
+</div>
+
+<!-- =========================================================
+     Hero
+     ========================================================= -->
+<main id="top">
+<section class="hero">
+  <div class="container hero__inner">
+    <span class="eyebrow hero__eyebrow reveal" data-i18n="hero.eyebrow">A Self-Love Lifestyle Brand</span>
+    <h1 class="display hero__title reveal reveal--delay-1">
+      <span data-i18n="hero.titleA">Romanticize</span> <em data-i18n="hero.titleB">yourself.</em>
+    </h1>
+    <p class="lead hero__sub reveal reveal--delay-2" data-i18n="hero.sub">
+      Every morning, KUAKUA reminds you of the woman you already are — luminous, magnetic, and worthy of your own admiration.
+    </p>
+    <div class="hero__cta reveal reveal--delay-3">
+      <a href="#manifesto" class="btn btn--primary btn--lg" data-i18n="hero.cta1">Discover the brand</a>
+      <a href="#products" class="link-underline" data-i18n="hero.cta2">Shop the edit →</a>
+    </div>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span data-i18n="hero.scroll">Scroll</span></div>
+</section>
+
+<!-- =========================================================
+     Manifesto
+     ========================================================= -->
+<section class="manifesto" id="manifesto">
+  <div class="container">
+    <div class="manifesto__grid">
+      <div class="reveal">
+        <span class="eyebrow" data-i18n="manifesto.eyebrow">Manifesto</span>
+        <p class="manifesto__quote" data-i18n="manifesto.quote">
+          You are not your to-do list. You are not your output. You are the soft, magnetic, infinite woman everyone can feel before you speak.
+        </p>
+      </div>
+      <div class="manifesto__body reveal reveal--delay-1">
+        <p class="lead" data-i18n="manifesto.p1">
+          KUAKUA was born from a quiet rebellion. We were tired of self-improvement that felt like punishment — of waking up to push, hustle, optimize, fix.
+        </p>
+        <p class="lead" data-i18n="manifesto.p2">
+          So we built a brand around the opposite practice: <em>self-appreciation</em>. Soft mornings. High vibrations. Mirrors that talk back kindly. A wardrobe of words you can wear all day.
+        </p>
+        <p class="lead" data-i18n="manifesto.p3">
+          We are not selling affirmations. We are selling the identity that comes with them — the woman who already believes she is enough.
+        </p>
+        <div class="manifesto__signature">
+          <span data-i18n="manifesto.sig">Richard Chen × Tina Liu, founders</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     Pillars
+     ========================================================= -->
+<section class="pillars" id="pillars">
+  <div class="container">
+    <div class="pillars__head reveal">
+      <span class="eyebrow" data-i18n="pillars.eyebrow">The Four Pillars</span>
+      <h2 class="display display-md" style="margin-top: 16px;" data-i18n="pillars.title">A new vocabulary of <em class="italic">becoming</em>.</h2>
+    </div>
+
+    <div class="pillars__grid reveal reveal--delay-1">
+      <div class="pillar">
+        <svg class="pillar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-4.5-7-11a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 6.5-7 11-7 11z"/></svg>
+        <span class="pillar__num">01</span>
+        <h3 class="pillar__title">
+          <span data-i18n="pillars.p1.title">Self-Love</span>
+          <em data-i18n="pillars.p1.tag">爱自己</em>
+        </h3>
+        <p class="pillar__body" data-i18n="pillars.p1.body">The daily practice of speaking to yourself the way you'd speak to your most beloved friend.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/><path d="M8 12a4 4 0 0 1 8 0"/></svg>
+        <span class="pillar__num">02</span>
+        <h3 class="pillar__title">
+          <span data-i18n="pillars.p2.title">Soft Life</span>
+          <em data-i18n="pillars.p2.tag">柔软生活</em>
+        </h3>
+        <p class="pillar__body" data-i18n="pillars.p2.body">Slowness is not laziness. It is the discipline of being present in your own beautiful life.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        <span class="pillar__num">03</span>
+        <h3 class="pillar__title">
+          <span data-i18n="pillars.p3.title">High Vibration</span>
+          <em data-i18n="pillars.p3.tag">高能量</em>
+        </h3>
+        <p class="pillar__body" data-i18n="pillars.p3.body">What you say to yourself becomes the frequency you broadcast. Choose words that lift the room.</p>
+      </div>
+      <div class="pillar">
+        <svg class="pillar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l3.09 6.26L22 10.27l-5 4.87 1.18 6.88L12 18.77 5.82 22 7 15.14l-5-4.87 6.91-1.01L12 3z"/></svg>
+        <span class="pillar__num">04</span>
+        <h3 class="pillar__title">
+          <span data-i18n="pillars.p4.title">Feminine Energy</span>
+          <em data-i18n="pillars.p4.tag">女性能量</em>
+        </h3>
+        <p class="pillar__body" data-i18n="pillars.p4.body">Power that doesn't push. Magnetism that doesn't perform. The quiet, undeniable knowing that you are enough.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     Affirmations carousel
+     ========================================================= -->
+<section class="affirmations" id="affirmations">
+  <div class="container">
+    <div class="affirm__head reveal">
+      <span class="eyebrow" data-i18n="affirm.eyebrow">Daily Affirmations</span>
+      <h2 class="display display-md" style="margin-top: 16px;" data-i18n="affirm.title">Words you can wear all day.</h2>
+    </div>
+
+    <div class="affirm__tabs reveal reveal--delay-1" role="tablist">
+      <button class="affirm__tab is-active" data-tab="mirror" role="tab" data-i18n="affirm.tab1">Mirror</button>
+      <button class="affirm__tab" data-tab="sleep" role="tab" data-i18n="affirm.tab2">Bedtime</button>
+      <button class="affirm__tab" data-tab="wealth" role="tab" data-i18n="affirm.tab3">Abundance</button>
+    </div>
+
+    <div class="affirm__stage reveal reveal--delay-2" id="affirmStage" aria-live="polite">
+      <!-- cards injected by JS -->
+    </div>
+
+    <div class="affirm__dots" id="affirmDots" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- =========================================================
+     Products preview
+     ========================================================= -->
+<section class="products" id="products">
+  <div class="container">
+    <div class="products__head reveal">
+      <div>
+        <span class="eyebrow" data-i18n="products.eyebrow">The Edit</span>
+        <h2 class="display display-md products__title" style="margin-top: 16px;" data-i18n="products.title">A wardrobe of <em class="italic">words.</em></h2>
+      </div>
+      <p class="lead" style="max-width: 36ch;" data-i18n="products.sub">Beginning with digital. Becoming a lifestyle.</p>
+    </div>
+
+    <div class="products__grid">
+      <article class="product reveal">
+        <div class="product__media"><div class="product__visual" data-i18n="products.p1.visual">365 days of becoming her.</div></div>
+        <div class="product__body">
+          <span class="product__tag" data-i18n="products.p1.tag">Digital · Coming Soon</span>
+          <h3 class="product__name" data-i18n="products.p1.name">The Affirmation Almanac</h3>
+          <p class="product__desc" data-i18n="products.p1.desc">365 high-vibration affirmations, organized by season and intention. Beautifully designed. Endlessly re-readable.</p>
+          <div class="product__foot">
+            <span class="product__price">$28</span>
+            <span class="product__badge" data-i18n="products.badge.new">New</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product reveal reveal--delay-1">
+        <div class="product__media"><div class="product__visual" data-i18n="products.p2.visual">Wallpapers that whisper.</div></div>
+        <div class="product__body">
+          <span class="product__tag" data-i18n="products.p2.tag">Digital · Free Edition</span>
+          <h3 class="product__name" data-i18n="products.p2.name">Mirror Wallpaper Set</h3>
+          <p class="product__desc" data-i18n="products.p2.desc">Twelve phone wallpapers, one for each mood you'll meet this month. Designed for the woman who never forgets who she is.</p>
+          <div class="product__foot">
+            <span class="product__price" data-i18n="products.p2.price">Free</span>
+            <span class="product__badge" data-i18n="products.badge.gift">Gift</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="product reveal reveal--delay-2">
+        <div class="product__media"><div class="product__visual" data-i18n="products.p3.visual">The KUAKUA app.</div></div>
+        <div class="product__body">
+          <span class="product__tag" data-i18n="products.p3.tag">App · In Development</span>
+          <h3 class="product__name" data-i18n="products.p3.name">KUAKUA Daily</h3>
+          <p class="product__desc" data-i18n="products.p3.desc">Gratitude journal, mood log, and AI-curated affirmation each morning. Designed to make you fall in love with your own life.</p>
+          <div class="product__foot">
+            <span class="product__price" data-i18n="products.p3.price">Coming 2026</span>
+            <span class="product__badge" data-i18n="products.badge.soon">Soon</span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- =========================================================
+     Community / Newsletter
+     ========================================================= -->
+<section class="community">
+  <div class="container community__inner">
+    <span class="eyebrow reveal" data-i18n="community.eyebrow">The Inner Circle</span>
+    <h2 class="display display-md community__title reveal reveal--delay-1" style="margin-top: 16px;" data-i18n="community.title">
+      Become a KUAKUA <em class="italic">insider.</em>
+    </h2>
+    <p class="community__lead reveal reveal--delay-2" data-i18n="community.lead">
+      Early access to drops. Weekly affirmation letters. Founder notes you won't find anywhere else.
+    </p>
+    <form class="newsletter reveal reveal--delay-3" id="newsletterForm" novalidate>
+      <input type="email" name="email" required placeholder="your@email.com" aria-label="Email address" data-i18n-attr="placeholder|community.placeholder" />
+      <button type="submit" class="btn btn--accent" data-i18n="community.cta">Subscribe</button>
+    </form>
+    <p class="newsletter__note reveal reveal--delay-3" data-i18n="community.note">We send love, never spam. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- =========================================================
+     Founders
+     ========================================================= -->
+<section class="founders" id="founders">
+  <div class="container">
+    <div class="founders__head reveal">
+      <span class="eyebrow" data-i18n="founders.eyebrow">The Founders</span>
+      <h2 class="display display-md" style="margin-top: 16px;" data-i18n="founders.title">Built by two people who <em class="italic">believe in her.</em></h2>
+    </div>
+    <div class="founders__grid">
+      <div class="founder reveal">
+        <div class="founder__avatar" aria-hidden="true">R</div>
+        <h3 class="founder__name" data-i18n="founders.f1.name">Richard Chen</h3>
+        <p class="founder__role" data-i18n="founders.f1.role">Co-founder · Brand & Tech</p>
+        <p class="founder__bio" data-i18n="founders.f1.bio">陳宏强. Builder of brands at the intersection of identity, technology, and beauty.</p>
+      </div>
+      <div class="founder reveal reveal--delay-1">
+        <div class="founder__avatar" aria-hidden="true">T</div>
+        <h3 class="founder__name" data-i18n="founders.f2.name">Tina Liu</h3>
+        <p class="founder__role" data-i18n="founders.f2.role">Co-founder · Creative & Voice</p>
+        <p class="founder__bio" data-i18n="founders.f2.bio">刘婷. The voice behind KUAKUA — turning everyday rituals into a vocabulary of self-love.</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- =========================================================
+     Footer
+     ========================================================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand-block">
+        <div class="brand" style="font-size: 24px;">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span>KUAKUA</span>
+          <span class="brand__cn" data-i18n="brand.cn">夸夸</span>
+        </div>
+        <p class="footer__tagline" data-i18n="footer.tagline">Romanticize yourself. Pretty mind. Pretty life.</p>
+      </div>
+      <div class="footer__col">
+        <h4 data-i18n="footer.col1.title">Brand</h4>
+        <ul>
+          <li><a href="#manifesto" data-i18n="nav.manifesto">Manifesto</a></li>
+          <li><a href="#pillars" data-i18n="nav.pillars">Pillars</a></li>
+          <li><a href="#founders" data-i18n="footer.about">About</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 data-i18n="footer.col2.title">Shop</h4>
+        <ul>
+          <li><a href="#products" data-i18n="footer.almanac">The Almanac</a></li>
+          <li><a href="#products" data-i18n="footer.wallpapers">Wallpapers</a></li>
+          <li><a href="#products" data-i18n="footer.app">KUAKUA Daily</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <h4 data-i18n="footer.col3.title">Connect</h4>
+        <ul>
+          <li><a href="#" data-i18n="footer.instagram">Instagram</a></li>
+          <li><a href="#" data-i18n="footer.xiaohongshu">小红书</a></li>
+          <li><a href="mailto:hello@kuakua.brand" data-i18n="footer.email">hello@kuakua.brand</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Chenhongqiang Richard Chen. <span data-i18n="footer.rights">All rights reserved.</span></span>
+      <span class="footer__version">v1.0.0</span>
+    </div>
+  </div>
+</footer>
+
+<!-- =========================================================
+     Auth Modal
+     ========================================================= -->
+<div class="modal" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+  <div class="modal__panel">
+    <button class="modal__close" id="authClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+    <h2 class="modal__title" id="authTitle" data-i18n="auth.title">Welcome, beautiful.</h2>
+    <p class="modal__sub" data-i18n="auth.sub">Join the KUAKUA inner circle. No spam — just self-love.</p>
+
+    <div class="auth-tabs" role="tablist">
+      <button class="auth-tab is-active" data-auth-tab="signin" role="tab" data-i18n="auth.tab.signin">Sign In</button>
+      <button class="auth-tab" data-auth-tab="signup" role="tab" data-i18n="auth.tab.signup">Sign Up</button>
+    </div>
+
+    <div class="form-success" id="authSuccess" data-i18n="auth.success">Welcome to KUAKUA. Check your inbox.</div>
+
+    <!-- Sign In -->
+    <form class="auth-form is-active" id="signinForm" data-auth-form="signin" novalidate>
+      <div class="form-field">
+        <label for="signinEmail" data-i18n="auth.email">Email</label>
+        <input type="email" id="signinEmail" name="email" required autocomplete="email" />
+        <div class="form-error" data-i18n="auth.err.email">Please enter a valid email.</div>
+      </div>
+      <div class="form-field">
+        <label for="signinPwd" data-i18n="auth.password">Password</label>
+        <input type="password" id="signinPwd" name="password" required minlength="6" autocomplete="current-password" />
+        <div class="form-error" data-i18n="auth.err.password">At least 6 characters.</div>
+      </div>
+      <button type="submit" class="btn btn--primary form-submit" data-i18n="auth.signin">Sign In</button>
+      <p class="form-hint" data-i18n="auth.hint.signin">Your data is stored locally on this device. Real auth coming with v2.</p>
+    </form>
+
+    <!-- Sign Up -->
+    <form class="auth-form" id="signupForm" data-auth-form="signup" novalidate>
+      <div class="form-field">
+        <label for="signupName" data-i18n="auth.name">Name</label>
+        <input type="text" id="signupName" name="name" required minlength="1" autocomplete="name" />
+        <div class="form-error" data-i18n="auth.err.name">Tell us what to call you.</div>
+      </div>
+      <div class="form-field">
+        <label for="signupEmail" data-i18n="auth.email">Email</label>
+        <input type="email" id="signupEmail" name="email" required autocomplete="email" />
+        <div class="form-error" data-i18n="auth.err.email">Please enter a valid email.</div>
+      </div>
+      <div class="form-field">
+        <label for="signupPwd" data-i18n="auth.password">Password</label>
+        <input type="password" id="signupPwd" name="password" required minlength="6" autocomplete="new-password" />
+        <div class="form-error" data-i18n="auth.err.password">At least 6 characters.</div>
+      </div>
+      <button type="submit" class="btn btn--primary form-submit" data-i18n="auth.signup">Create my account</button>
+      <p class="form-hint" data-i18n="auth.hint.signup">By joining you agree to receive love letters from KUAKUA.</p>
+    </form>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* =========================================================
+   KUAKUA — Client-side logic (v1.0)
+   Sections:
+     1. i18n dictionary
+     2. State persistence (theme, locale, user)
+     3. Nav + mobile menu
+     4. Theme toggle
+     5. Language toggle
+     6. Affirmations carousel
+     7. Auth modal (localStorage-backed for v1)
+     8. Newsletter form
+     9. Scroll reveal observer
+    10. Init
+   ========================================================= */
+
+/* ---------- 1. i18n dictionary ---------- */
+const I18N = {
+  en: {
+    "brand.cn": "夸夸",
+    "nav.manifesto": "Manifesto",
+    "nav.pillars": "Pillars",
+    "nav.affirmations": "Affirmations",
+    "nav.products": "Shop",
+    "nav.about": "About",
+    "nav.join": "Join",
+
+    "hero.eyebrow": "A Self-Love Lifestyle Brand",
+    "hero.titleA": "Romanticize",
+    "hero.titleB": "yourself.",
+    "hero.sub": "Every morning, KUAKUA reminds you of the woman you already are — luminous, magnetic, and worthy of your own admiration.",
+    "hero.cta1": "Discover the brand",
+    "hero.cta2": "Shop the edit →",
+    "hero.scroll": "Scroll",
+
+    "manifesto.eyebrow": "Manifesto",
+    "manifesto.quote": "You are not your to-do list. You are not your output. You are the soft, magnetic, infinite woman everyone can feel before you speak.",
+    "manifesto.p1": "KUAKUA was born from a quiet rebellion. We were tired of self-improvement that felt like punishment — of waking up to push, hustle, optimize, fix.",
+    "manifesto.p2": "So we built a brand around the opposite practice: <em>self-appreciation</em>. Soft mornings. High vibrations. Mirrors that talk back kindly. A wardrobe of words you can wear all day.",
+    "manifesto.p3": "We are not selling affirmations. We are selling the identity that comes with them — the woman who already believes she is enough.",
+    "manifesto.sig": "Richard Chen × Tina Liu, founders",
+
+    "pillars.eyebrow": "The Four Pillars",
+    "pillars.title": "A new vocabulary of <em class='italic'>becoming.</em>",
+    "pillars.p1.title": "Self-Love",
+    "pillars.p1.tag": "爱自己",
+    "pillars.p1.body": "The daily practice of speaking to yourself the way you'd speak to your most beloved friend.",
+    "pillars.p2.title": "Soft Life",
+    "pillars.p2.tag": "柔软生活",
+    "pillars.p2.body": "Slowness is not laziness. It is the discipline of being present in your own beautiful life.",
+    "pillars.p3.title": "High Vibration",
+    "pillars.p3.tag": "高能量",
+    "pillars.p3.body": "What you say to yourself becomes the frequency you broadcast. Choose words that lift the room.",
+    "pillars.p4.title": "Feminine Energy",
+    "pillars.p4.tag": "女性能量",
+    "pillars.p4.body": "Power that doesn't push. Magnetism that doesn't perform. The quiet, undeniable knowing that you are enough.",
+
+    "affirm.eyebrow": "Daily Affirmations",
+    "affirm.title": "Words you can wear all day.",
+    "affirm.tab1": "Mirror",
+    "affirm.tab2": "Bedtime",
+    "affirm.tab3": "Abundance",
+
+    "products.eyebrow": "The Edit",
+    "products.title": "A wardrobe of <em class='italic'>words.</em>",
+    "products.sub": "Beginning with digital. Becoming a lifestyle.",
+    "products.badge.new": "New",
+    "products.badge.gift": "Gift",
+    "products.badge.soon": "Soon",
+    "products.p1.visual": "365 days of becoming her.",
+    "products.p1.tag": "Digital · Coming Soon",
+    "products.p1.name": "The Affirmation Almanac",
+    "products.p1.desc": "365 high-vibration affirmations, organized by season and intention. Beautifully designed. Endlessly re-readable.",
+    "products.p2.visual": "Wallpapers that whisper.",
+    "products.p2.tag": "Digital · Free Edition",
+    "products.p2.name": "Mirror Wallpaper Set",
+    "products.p2.desc": "Twelve phone wallpapers, one for each mood you'll meet this month. Designed for the woman who never forgets who she is.",
+    "products.p2.price": "Free",
+    "products.p3.visual": "The KUAKUA app.",
+    "products.p3.tag": "App · In Development",
+    "products.p3.name": "KUAKUA Daily",
+    "products.p3.desc": "Gratitude journal, mood log, and AI-curated affirmation each morning. Designed to make you fall in love with your own life.",
+    "products.p3.price": "Coming 2026",
+
+    "community.eyebrow": "The Inner Circle",
+    "community.title": "Become a KUAKUA <em class='italic'>insider.</em>",
+    "community.lead": "Early access to drops. Weekly affirmation letters. Founder notes you won't find anywhere else.",
+    "community.placeholder": "your@email.com",
+    "community.cta": "Subscribe",
+    "community.note": "We send love, never spam. Unsubscribe anytime.",
+
+    "founders.eyebrow": "The Founders",
+    "founders.title": "Built by two people who <em class='italic'>believe in her.</em>",
+    "founders.f1.name": "Richard Chen",
+    "founders.f1.role": "Co-founder · Brand & Tech",
+    "founders.f1.bio": "陳宏强. Builder of brands at the intersection of identity, technology, and beauty.",
+    "founders.f2.name": "Tina Liu",
+    "founders.f2.role": "Co-founder · Creative & Voice",
+    "founders.f2.bio": "刘婷. The voice behind KUAKUA — turning everyday rituals into a vocabulary of self-love.",
+
+    "footer.tagline": "Romanticize yourself. Pretty mind. Pretty life.",
+    "footer.col1.title": "Brand",
+    "footer.col2.title": "Shop",
+    "footer.col3.title": "Connect",
+    "footer.about": "About",
+    "footer.almanac": "The Almanac",
+    "footer.wallpapers": "Wallpapers",
+    "footer.app": "KUAKUA Daily",
+    "footer.instagram": "Instagram",
+    "footer.xiaohongshu": "Xiaohongshu",
+    "footer.email": "hello@kuakua.brand",
+    "footer.rights": "All rights reserved.",
+
+    "auth.title": "Welcome, beautiful.",
+    "auth.sub": "Join the KUAKUA inner circle. No spam — just self-love.",
+    "auth.tab.signin": "Sign In",
+    "auth.tab.signup": "Sign Up",
+    "auth.name": "Name",
+    "auth.email": "Email",
+    "auth.password": "Password",
+    "auth.signin": "Sign In",
+    "auth.signup": "Create my account",
+    "auth.hint.signin": "Your data is stored locally on this device. Real auth coming with v2.",
+    "auth.hint.signup": "By joining you agree to receive love letters from KUAKUA.",
+    "auth.err.name": "Tell us what to call you.",
+    "auth.err.email": "Please enter a valid email.",
+    "auth.err.password": "At least 6 characters.",
+    "auth.success": "Welcome to KUAKUA. Check your inbox.",
+
+    "toast.subscribed": "Subscribed. Welcome in.",
+    "toast.signedin": "Welcome back, {name}.",
+    "toast.signedup": "Welcome, {name}. You're in.",
+    "toast.signedout": "Signed out.",
+    "toast.wronguser": "We couldn't find that account. Try signing up.",
+    "toast.wrongpwd": "That password doesn't match. Try again.",
+    "toast.exists": "An account with that email already exists.",
+    "nav.account": "Account",
+    "nav.signout": "Sign out"
+  },
+
+  zh: {
+    "brand.cn": "夸夸",
+    "nav.manifesto": "品牌主张",
+    "nav.pillars": "四大核心",
+    "nav.affirmations": "肯定语",
+    "nav.products": "商店",
+    "nav.about": "关于",
+    "nav.join": "加入",
+
+    "hero.eyebrow": "一个自我欣赏的生活方式品牌",
+    "hero.titleA": "把自己",
+    "hero.titleB": "活成诗。",
+    "hero.sub": "每一个清晨，夸夸提醒你 —— 你本就是那个发光、有磁场、值得被自己欣赏的女人。",
+    "hero.cta1": "了解品牌",
+    "hero.cta2": "看看精选 →",
+    "hero.scroll": "向下滑动",
+
+    "manifesto.eyebrow": "品牌主张",
+    "manifesto.quote": "你不是你的待办清单，不是你的产出。你是那个柔软、有磁场、无限的女人 —— 还没开口，大家就感受到了你。",
+    "manifesto.p1": "夸夸诞生于一场安静的反叛。我们厌倦了那种像惩罚的自我提升 —— 每天醒来就是推、卷、优化、修正。",
+    "manifesto.p2": "于是我们建了一个完全相反的品牌：<em>自我欣赏</em>。柔软的清晨。高频的能量。会温柔回应的镜子。一整套你可以穿一整天的好话。",
+    "manifesto.p3": "我们卖的不是肯定语。我们卖的是那个身份 —— 那个已经相信自己足够的女人。",
+    "manifesto.sig": "陈宏强 × 刘婷，联合创始人",
+
+    "pillars.eyebrow": "四大核心",
+    "pillars.title": "一种<em class='italic'>正在成为</em>的新语言。",
+    "pillars.p1.title": "爱自己",
+    "pillars.p1.tag": "Self-Love",
+    "pillars.p1.body": "每天，用你对最爱的朋友说话的方式，对自己说话。",
+    "pillars.p2.title": "柔软生活",
+    "pillars.p2.tag": "Soft Life",
+    "pillars.p2.body": "慢，不是懒。慢是一种纪律 —— 全然在场，活在自己的好生活里。",
+    "pillars.p3.title": "高能量",
+    "pillars.p3.tag": "High Vibration",
+    "pillars.p3.body": "你对自己说的话，就是你向世界发出的频率。请挑那些能照亮整个房间的句子。",
+    "pillars.p4.title": "女性能量",
+    "pillars.p4.tag": "Feminine Energy",
+    "pillars.p4.body": "不需要用力的力量。不需要表演的吸引力。那种安静的、确定无疑的「我已经够了」。",
+
+    "affirm.eyebrow": "每日肯定语",
+    "affirm.title": "可以穿一整天的好话。",
+    "affirm.tab1": "镜子",
+    "affirm.tab2": "睡前",
+    "affirm.tab3": "丰盛",
+
+    "products.eyebrow": "精选",
+    "products.title": "一个由<em class='italic'>好话</em>组成的衣橱。",
+    "products.sub": "从数字产品开始，长成一种生活方式。",
+    "products.badge.new": "新品",
+    "products.badge.gift": "赠礼",
+    "products.badge.soon": "即将上线",
+    "products.p1.visual": "365天，长成自己喜欢的样子。",
+    "products.p1.tag": "数字产品 · 即将上线",
+    "products.p1.name": "《365 高能量肯定语》",
+    "products.p1.desc": "365条精心写就的肯定语，按季节与心境排列。装帧美得想反复翻阅。",
+    "products.p2.visual": "会轻声说话的壁纸。",
+    "products.p2.tag": "数字产品 · 免费版",
+    "products.p2.name": "镜子壁纸合集",
+    "products.p2.desc": "12张手机壁纸，对应一整月你会遇见的12种心情。送给那个永远记得自己是谁的女孩。",
+    "products.p2.price": "免费",
+    "products.p3.visual": "夸夸 App",
+    "products.p3.tag": "App · 开发中",
+    "products.p3.name": "夸夸 Daily",
+    "products.p3.desc": "感恩日记 · 情绪记录 · 每日AI精选肯定语。设计的目的，是让你爱上自己的人生。",
+    "products.p3.price": "2026 上线",
+
+    "community.eyebrow": "内圈成员",
+    "community.title": "成为<em class='italic'>夸夸的人。</em>",
+    "community.lead": "新品提前订阅。每周一封肯定语来信。还有创始人没在别处说过的话。",
+    "community.placeholder": "你的@邮箱.com",
+    "community.cta": "订阅",
+    "community.note": "我们只送爱，不发垃圾。随时可以退订。",
+
+    "founders.eyebrow": "创始人",
+    "founders.title": "由两个真心<em class='italic'>相信她</em>的人，一起做的。",
+    "founders.f1.name": "陈宏强 Richard Chen",
+    "founders.f1.role": "联合创始人 · 品牌与技术",
+    "founders.f1.bio": "Builder of brands at the intersection of identity, technology, and beauty. 在「身份认同 × 科技 × 美」的交点上做品牌。",
+    "founders.f2.name": "刘婷 Tina Liu",
+    "founders.f2.role": "联合创始人 · 内容与品牌之声",
+    "founders.f2.bio": "夸夸背后的声音。把每天的小仪式，写成一套自我欣赏的语言。",
+
+    "footer.tagline": "把自己活成诗。漂亮的心，漂亮的生活。",
+    "footer.col1.title": "品牌",
+    "footer.col2.title": "商店",
+    "footer.col3.title": "联系",
+    "footer.about": "关于我们",
+    "footer.almanac": "《365肯定语》",
+    "footer.wallpapers": "壁纸合集",
+    "footer.app": "夸夸 Daily",
+    "footer.instagram": "Instagram",
+    "footer.xiaohongshu": "小红书",
+    "footer.email": "hello@kuakua.brand",
+    "footer.rights": "保留所有权利。",
+
+    "auth.title": "你好，漂亮的你。",
+    "auth.sub": "加入夸夸内圈。不发垃圾邮件 —— 只送自我欣赏。",
+    "auth.tab.signin": "登录",
+    "auth.tab.signup": "注册",
+    "auth.name": "称呼",
+    "auth.email": "邮箱",
+    "auth.password": "密码",
+    "auth.signin": "登录",
+    "auth.signup": "创建我的账号",
+    "auth.hint.signin": "你的数据目前只存在本机。v2 会接入真实账户系统。",
+    "auth.hint.signup": "加入即代表你愿意收到夸夸的「情书」。",
+    "auth.err.name": "告诉我们怎么称呼你。",
+    "auth.err.email": "请输入有效的邮箱。",
+    "auth.err.password": "至少 6 个字符。",
+    "auth.success": "欢迎加入夸夸。请查收你的邮箱。",
+
+    "toast.subscribed": "已订阅。欢迎入圈。",
+    "toast.signedin": "欢迎回来，{name}。",
+    "toast.signedup": "欢迎你，{name}，正式入圈。",
+    "toast.signedout": "已登出。",
+    "toast.wronguser": "找不到这个账号。要不要注册一个？",
+    "toast.wrongpwd": "密码不对，请再试一次。",
+    "toast.exists": "这个邮箱已经注册过了。",
+    "nav.account": "账户",
+    "nav.signout": "登出"
+  }
+};
+
+/* ---------- 2. State persistence ---------- */
+const STORAGE = {
+  theme:   "kk_theme",
+  locale:  "kk_locale",
+  users:   "kk_users",
+  session: "kk_session"
+};
+const store = {
+  get(k, fallback) { try { const v = localStorage.getItem(k); return v == null ? fallback : JSON.parse(v); } catch { return fallback; } },
+  set(k, v)       { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+  del(k)          { try { localStorage.removeItem(k); } catch {} }
+};
+
+/* ---------- 3. i18n apply ---------- */
+function applyI18n(locale) {
+  const dict = I18N[locale] || I18N.en;
+  document.documentElement.setAttribute("lang", locale === "zh" ? "zh-CN" : "en");
+  document.documentElement.setAttribute("data-locale", locale);
+
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.getAttribute("data-i18n");
+    if (dict[key] != null) el.innerHTML = dict[key];
+  });
+  document.querySelectorAll("[data-i18n-attr]").forEach(el => {
+    el.getAttribute("data-i18n-attr").split(";").forEach(pair => {
+      const [attr, key] = pair.split("|").map(s => s.trim());
+      if (dict[key] != null) el.setAttribute(attr, dict[key]);
+    });
+  });
+
+  // language toggle visual state
+  document.querySelectorAll(".lang-toggle__en").forEach(e => e.classList.toggle("lang-toggle__on", locale === "en"));
+  document.querySelectorAll(".lang-toggle__zh").forEach(e => e.classList.toggle("lang-toggle__on", locale === "zh"));
+
+  // re-render carousel for new locale
+  renderAffirmations();
+  // update nav account label if logged in
+  refreshAuthUi();
+}
+
+function setLocale(locale) {
+  store.set(STORAGE.locale, locale);
+  applyI18n(locale);
+}
+function currentLocale() { return store.get(STORAGE.locale) || (navigator.language.startsWith("zh") ? "zh" : "en"); }
+function t(key, vars) {
+  const dict = I18N[currentLocale()] || I18N.en;
+  let s = dict[key] || I18N.en[key] || key;
+  if (vars) for (const k in vars) s = s.replace(`{${k}}`, vars[k]);
+  return s;
+}
+
+/* ---------- 4. Theme ---------- */
+function setTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  store.set(STORAGE.theme, theme);
+  document.querySelector(".theme-icon-sun").style.display = theme === "dark" ? "none" : "block";
+  document.querySelector(".theme-icon-moon").style.display = theme === "dark" ? "block" : "none";
+}
+function currentTheme() {
+  const saved = store.get(STORAGE.theme);
+  if (saved) return saved;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
+
+/* ---------- 5. Nav ---------- */
+function initNav() {
+  const nav = document.getElementById("nav");
+  const menuBtn = document.getElementById("menuBtn");
+  window.addEventListener("scroll", () => {
+    nav.classList.toggle("is-scrolled", window.scrollY > 8);
+  });
+  menuBtn.addEventListener("click", () => {
+    const open = nav.classList.toggle("is-menu-open");
+    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    document.body.style.overflow = open ? "hidden" : "";
+  });
+  document.querySelectorAll(".mobile-menu a, .mobile-menu .btn").forEach(a => {
+    a.addEventListener("click", () => {
+      nav.classList.remove("is-menu-open");
+      menuBtn.setAttribute("aria-expanded", "false");
+      document.body.style.overflow = "";
+    });
+  });
+}
+
+/* ---------- 6. Affirmations carousel ---------- */
+const AFFIRMATIONS = {
+  en: {
+    mirror: [
+      "I am becoming more myself every day.",
+      "My face is becoming softer, kinder, more luminous.",
+      "I look at myself the way someone in love would.",
+      "Today, I am exactly the woman I needed to meet."
+    ],
+    sleep: [
+      "I release the day. Tomorrow already loves me.",
+      "I am safe. I am held. I am enough.",
+      "While I sleep, my body remembers how to be beautiful.",
+      "I close my eyes proud of who I was today."
+    ],
+    wealth: [
+      "Money flows toward the woman who feels worthy of receiving.",
+      "Abundance is my natural frequency.",
+      "I am magnetic to opportunities, ease, and beautiful things.",
+      "I am allowed to want more, and to have it."
+    ]
+  },
+  zh: {
+    mirror: [
+      "我每天都在变成更像自己的样子。",
+      "我的脸正在变得更柔软、更温柔、更发光。",
+      "我用一个爱我的人的眼神，看我自己。",
+      "今天，我就是我从前最想遇见的那个女人。"
+    ],
+    sleep: [
+      "我放下今天。明天已经开始爱我了。",
+      "我安全。我被托住。我已经够了。",
+      "当我入睡时，我的身体正在记起怎样变美。",
+      "我闭上眼睛，为今天的自己骄傲。"
+    ],
+    wealth: [
+      "财富流向那个相信自己值得收获的女人。",
+      "丰盛，是我天然的频率。",
+      "我对好机会、好物、轻松的事物，有磁场。",
+      "我可以想要更多，也可以真的拥有。"
+    ]
+  }
+};
+let currentTab = "mirror";
+let currentSlide = 0;
+let carouselTimer = null;
+
+function renderAffirmations() {
+  const stage = document.getElementById("affirmStage");
+  const dots  = document.getElementById("affirmDots");
+  if (!stage) return;
+  const list = (AFFIRMATIONS[currentLocale()] || AFFIRMATIONS.en)[currentTab];
+
+  stage.innerHTML = list.map((line, i) => `
+    <article class="affirm__card${i === currentSlide ? " is-active" : ""}" data-idx="${i}">
+      <p class="affirm__text">${line}</p>
+      <p class="affirm__attribution">KUAKUA · ${currentTab}</p>
+    </article>
+  `).join("");
+  dots.innerHTML = list.map((_, i) => `<span class="affirm__dot${i === currentSlide ? " is-active" : ""}"></span>`).join("");
+}
+
+function nextSlide() {
+  const list = (AFFIRMATIONS[currentLocale()] || AFFIRMATIONS.en)[currentTab];
+  currentSlide = (currentSlide + 1) % list.length;
+  renderAffirmations();
+}
+function startCarousel() {
+  stopCarousel();
+  carouselTimer = setInterval(nextSlide, 5400);
+}
+function stopCarousel() { if (carouselTimer) clearInterval(carouselTimer); }
+
+function initAffirmations() {
+  renderAffirmations();
+  startCarousel();
+  document.querySelectorAll(".affirm__tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      document.querySelectorAll(".affirm__tab").forEach(t => t.classList.toggle("is-active", t === tab));
+      currentTab = tab.dataset.tab;
+      currentSlide = 0;
+      renderAffirmations();
+      startCarousel();
+    });
+  });
+  // Pause on hover for desktop
+  const section = document.getElementById("affirmations");
+  section.addEventListener("mouseenter", stopCarousel);
+  section.addEventListener("mouseleave", startCarousel);
+}
+
+/* ---------- 7. Auth (localStorage v1) ---------- */
+function openModal()  { document.getElementById("authModal").classList.add("is-open"); document.body.style.overflow = "hidden"; }
+function closeModal() { document.getElementById("authModal").classList.remove("is-open"); document.body.style.overflow = ""; document.getElementById("authSuccess").classList.remove("is-shown"); }
+
+function showError(field, show) { field.closest(".form-field").classList.toggle("is-error", show); }
+
+function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+async function hashPassword(pwd, salt) {
+  // SHA-256 is not real password hashing — but it keeps plaintext out of localStorage for v1.
+  // v2 will use a real backend.
+  const enc = new TextEncoder().encode(pwd + ":" + salt);
+  const buf = await crypto.subtle.digest("SHA-256", enc);
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+function randSalt() {
+  const a = new Uint8Array(8);
+  crypto.getRandomValues(a);
+  return Array.from(a).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+async function handleSignup(form) {
+  const name = form.name.value.trim();
+  const email = form.email.value.trim().toLowerCase();
+  const pwd  = form.password.value;
+  let ok = true;
+  showError(form.name, !name); if (!name) ok = false;
+  showError(form.email, !isEmail(email)); if (!isEmail(email)) ok = false;
+  showError(form.password, pwd.length < 6); if (pwd.length < 6) ok = false;
+  if (!ok) return;
+
+  const users = store.get(STORAGE.users, {});
+  if (users[email]) { toast(t("toast.exists")); return; }
+
+  const salt = randSalt();
+  const hash = await hashPassword(pwd, salt);
+  users[email] = { name, salt, hash, createdAt: new Date().toISOString() };
+  store.set(STORAGE.users, users);
+  store.set(STORAGE.session, { email, name });
+  refreshAuthUi();
+  toast(t("toast.signedup", { name }));
+  form.reset();
+  closeModal();
+}
+
+async function handleSignin(form) {
+  const email = form.email.value.trim().toLowerCase();
+  const pwd   = form.password.value;
+  let ok = true;
+  showError(form.email, !isEmail(email)); if (!isEmail(email)) ok = false;
+  showError(form.password, pwd.length < 6); if (pwd.length < 6) ok = false;
+  if (!ok) return;
+
+  const users = store.get(STORAGE.users, {});
+  const u = users[email];
+  if (!u) { toast(t("toast.wronguser")); return; }
+  const hash = await hashPassword(pwd, u.salt);
+  if (hash !== u.hash) { toast(t("toast.wrongpwd")); return; }
+
+  store.set(STORAGE.session, { email, name: u.name });
+  refreshAuthUi();
+  toast(t("toast.signedin", { name: u.name }));
+  form.reset();
+  closeModal();
+}
+
+function signOut() {
+  store.del(STORAGE.session);
+  refreshAuthUi();
+  toast(t("toast.signedout"));
+}
+
+function refreshAuthUi() {
+  const sess = store.get(STORAGE.session);
+  document.querySelectorAll("[data-open-auth]").forEach(btn => {
+    if (sess) {
+      btn.textContent = `${t("nav.account")} · ${sess.name}`;
+      btn.onclick = signOut;
+      btn.title = t("nav.signout");
+    } else {
+      btn.textContent = t("nav.join");
+      btn.onclick = openModal;
+      btn.title = "";
+    }
+  });
+}
+
+function initAuth() {
+  document.getElementById("authClose").addEventListener("click", closeModal);
+  document.getElementById("authModal").addEventListener("click", e => {
+    if (e.target.id === "authModal") closeModal();
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeModal();
+  });
+  document.querySelectorAll(".auth-tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      const key = tab.dataset.authTab;
+      document.querySelectorAll(".auth-tab").forEach(t => t.classList.toggle("is-active", t === tab));
+      document.querySelectorAll(".auth-form").forEach(f => f.classList.toggle("is-active", f.dataset.authForm === key));
+    });
+  });
+  document.getElementById("signinForm").addEventListener("submit", e => { e.preventDefault(); handleSignin(e.target); });
+  document.getElementById("signupForm").addEventListener("submit", e => { e.preventDefault(); handleSignup(e.target); });
+  refreshAuthUi();
+}
+
+/* ---------- 8. Newsletter ---------- */
+function initNewsletter() {
+  const form = document.getElementById("newsletterForm");
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+    const email = form.email.value.trim().toLowerCase();
+    if (!isEmail(email)) { toast(t("auth.err.email")); return; }
+    const subs = store.get("kk_subs", []);
+    if (!subs.includes(email)) subs.push(email);
+    store.set("kk_subs", subs);
+    toast(t("toast.subscribed"));
+    form.reset();
+  });
+}
+
+/* ---------- 9. Scroll reveal ---------- */
+function initReveal() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        en.target.classList.add("is-visible");
+        io.unobserve(en.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+}
+
+/* ---------- Toast ---------- */
+let toastTimer = null;
+function toast(msg) {
+  const el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("is-shown");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove("is-shown"), 3000);
+}
+
+/* ---------- 10. Init ---------- */
+document.addEventListener("DOMContentLoaded", () => {
+  setTheme(currentTheme());
+  applyI18n(currentLocale());
+
+  document.getElementById("themeToggle").addEventListener("click", () => {
+    setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
+  });
+  document.getElementById("langToggle").addEventListener("click", () => {
+    setLocale(currentLocale() === "en" ? "zh" : "en");
+  });
+
+  initNav();
+  initAffirmations();
+  initAuth();
+  initNewsletter();
+  initReveal();
+});
+</script>
+
+</body>
+</html>

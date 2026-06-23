@@ -1,0 +1,129 @@
+PROPRIETARY LICENSE — ALL RIGHTS RESERVED
+专有许可证 — 保留所有权利
+
+================================================================
+KUAKUA 夸夸
+================================================================
+
+Copyright © 2026 Chenhongqiang Richard Chen (陈宏强).
+All rights reserved. 保留所有权利。
+
+KUAKUA / 夸夸 is a registered brand co-created by Richard Chen
+(陈宏强) × Tina Liu (刘婷). Brand rights are governed separately
+by the founders' agreement; this LICENSE governs the source code,
+copy, design, and assets contained in this repository.
+
+----------------------------------------------------------------
+1. OWNERSHIP / 所有权
+----------------------------------------------------------------
+
+All source code, HTML, CSS, JavaScript, copy (English and
+Chinese), brand language, visual design, color systems,
+typographic systems, illustrations, icons, and any other
+materials in this repository (collectively, the "Work") are the
+exclusive intellectual property of the copyright holder named
+above.
+
+本仓库中包含的全部源代码、HTML、CSS、JavaScript、文案（中英文）、
+品牌语言、视觉设计、配色体系、字体体系、插图、图标，以及任何其他
+材料（统称"作品"），均为上述署名版权人专有的知识产权。
+
+----------------------------------------------------------------
+2. PERMITTED USE / 许可用途
+----------------------------------------------------------------
+
+You ARE permitted to:
+  (a) View and read the source code of this repository for
+      personal educational reference;
+  (b) Visit and interact with the publicly deployed website at
+      any URL the copyright holder chooses to publish it under;
+  (c) Open issues or submit pull requests, with the understanding
+      that any accepted contributions are licensed to the
+      copyright holder under the same terms.
+
+你被许可：
+  (a) 出于个人学习参考目的，浏览和阅读本仓库的源代码；
+  (b) 访问和使用版权人选择公开发布的网站；
+  (c) 提交 issue 或 pull request，但默认任何被接受的贡献以同样的
+      条款授权给版权人。
+
+----------------------------------------------------------------
+3. PROHIBITED USE / 禁止用途
+----------------------------------------------------------------
+
+Without prior, explicit, written permission from the copyright
+holder, you may NOT:
+
+  (a) Copy, fork, clone, redistribute, sublicense, or mirror any
+      portion of the Work for commercial purposes;
+  (b) Use the Work, or any substantial part of it, as the basis
+      for a competing product, brand, or website;
+  (c) Use the names "KUAKUA", "夸夸", "Chenhongqiang Richard
+      Chen", "陈宏强", "Tina Liu", or "刘婷", or any associated
+      logos, marks, or trade dress, in connection with any
+      product, service, or publication;
+  (d) Train, fine-tune, or evaluate machine learning models on
+      the Work, in whole or in part;
+  (e) Remove, alter, or obscure any copyright, trademark, or
+      attribution notices contained in the Work;
+  (f) Use the Work in any manner that could reasonably be
+      construed as defamatory, deceptive, or harmful to the
+      KUAKUA brand or its founders.
+
+未经版权人事先明确的书面许可，你不得：
+
+  (a) 出于商业目的复制、fork、clone、再分发、再授权、镜像作品的
+      任何部分；
+  (b) 将作品或其实质性部分用作竞争性产品、品牌或网站的基础；
+  (c) 在任何产品、服务或出版物中使用"KUAKUA"、"夸夸"、
+      "Chenhongqiang Richard Chen"、"陈宏强"、"Tina Liu"、"刘婷"
+      名称，或任何相关的标识、商标、商业外观；
+  (d) 将作品（全部或部分）用于训练、微调或评估机器学习模型；
+  (e) 删除、修改或遮蔽作品中包含的任何版权、商标或署名声明；
+  (f) 以任何可能合理地被解释为诽谤、误导或损害 KUAKUA 品牌或其
+      创始人的方式使用作品。
+
+----------------------------------------------------------------
+4. NO WARRANTY / 免责声明
+----------------------------------------------------------------
+
+THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+NON-INFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE
+LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM
+THE USE OF OR INABILITY TO USE THE WORK.
+
+作品按"原样"提供，不附带任何明示或暗示的保证，包括但不限于适销性、
+特定用途适用性、不侵权的保证。在任何情况下，版权人对因使用或无法
+使用作品而产生的任何索赔、损害或其他责任，均不承担责任。
+
+----------------------------------------------------------------
+5. GOVERNING LAW / 适用法律
+----------------------------------------------------------------
+
+This License shall be governed by and construed in accordance
+with the laws of the People's Republic of China, without regard
+to its conflict-of-law provisions. Any dispute arising out of or
+in connection with this License shall be submitted to the
+exclusive jurisdiction of the competent courts located at the
+copyright holder's domicile.
+
+本许可证应受中华人民共和国法律管辖并据其解释，不考虑其法律冲突
+条款。因本许可证产生或与之相关的任何争议，应提交版权人住所地有
+管辖权的法院专属管辖。
+
+----------------------------------------------------------------
+6. CONTACT / 联系方式
+----------------------------------------------------------------
+
+For commercial licensing, partnership inquiries, or any
+permission requests:
+  hello@kuakua.brand
+
+商业授权、合作咨询、许可申请，请联系：
+  hello@kuakua.brand
+
+================================================================
+End of License · 许可证终
+================================================================
