@@ -10,12 +10,17 @@ This repository is the **public-facing brand website** for KUAKUA — a single, 
 
 **Current version:** `v1.1.2` (2026-06-23)
 
+> 🌹 **操作 / 维护这个网站？请先看 [工作台.md](./%E5%B7%A5%E4%BD%9C%E5%8F%B0.md)**
+> —— 所有 URL、登录流程、发布步骤、Token 续期、紧急处理都集中在那一份文档里。
+> README 是给开发者看项目结构的，工作台是给你日常操作用的。
+
 ---
 
 ## What's inside
 
 | File | Purpose |
 | --- | --- |
+| **`工作台.md`** | **🌹 Operator playbook — daily ops, URLs, troubleshooting, token rotation** |
 | `index.html` | The public brand site (single self-contained HTML) |
 | `admin.html` | Browser-based CMS to publish/edit/delete journal posts |
 | `data/posts.json` | Source of truth for all journal posts |
