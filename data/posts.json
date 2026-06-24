@@ -3,13 +3,31 @@
   "version": 1,
   "posts": [
     {
+      "id": "20260624-0947-夸夸日志-测试篇",
+      "slug": "夸夸日志-测试篇",
+      "date": "2026-06-24T01:46:00.000Z",
+      "title": "夸夸日志 测试篇",
+      "title_en": "测试1",
+      "lang": "bilingual",
+      "tags": [
+        "test"
+      ],
+      "cover": "",
+      "excerpt": "测试\n测试",
+      "body": "很好\n这是个测试",
+      "published": true
+    },
+    {
       "id": "20260623-1500-welcome",
       "slug": "welcome",
       "date": "2026-06-23T15:00:00+08:00",
       "title": "夸夸日记 · 第一篇",
       "title_en": "KUAKUA Journal · First Entry",
       "lang": "bilingual",
-      "tags": ["manifesto", "launch"],
+      "tags": [
+        "manifesto",
+        "launch"
+      ],
       "cover": "",
       "excerpt": "Today is the day we begin. 把自己活成诗的第一天。",
       "body": "今天是夸夸品牌真正落地的一天。\n\n我们做了一个网站，不是为了好看（虽然它确实好看），而是为了有一个属于自己的家 —— 一个让所有「自我欣赏」的语言可以慢慢长出来的地方。\n\n从今天起，这里会有：\n\n- 每周一封肯定语来信\n- 创始人的小手记\n- 新品上线的第一手消息\n- 给夸夸内圈成员的隐藏内容\n\n---\n\n**EN**\n\nToday, KUAKUA officially has a home.\n\nWe built this site not because it's beautiful (though it is) — but because we needed a place that we own. A place where the vocabulary of self-love can grow, slowly, season by season.\n\nFrom today, you'll find here:\n\n- A weekly affirmation letter\n- Notes from the founders\n- First-hand news on every drop\n- Hidden content for KUAKUA insiders\n\nWelcome, beautiful.",
