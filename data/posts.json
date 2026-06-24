@@ -3,21 +3,6 @@
   "version": 1,
   "posts": [
     {
-      "id": "20260624-0947-夸夸日志-测试篇",
-      "slug": "夸夸日志-测试篇",
-      "date": "2026-06-24T01:46:00.000Z",
-      "title": "夸夸日志 测试篇",
-      "title_en": "测试1",
-      "lang": "bilingual",
-      "tags": [
-        "test"
-      ],
-      "cover": "",
-      "excerpt": "测试\n测试",
-      "body": "很好\n这是个测试",
-      "published": true
-    },
-    {
       "id": "20260623-1500-welcome",
       "slug": "welcome",
       "date": "2026-06-23T15:00:00+08:00",
